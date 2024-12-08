@@ -1,0 +1,2 @@
+module WebSecurityHelper
+end
