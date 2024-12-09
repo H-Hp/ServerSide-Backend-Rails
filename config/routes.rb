@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   #API
   get 'api/rest'
-  get '/rest'  => 'api#rest'
+  resources :api_rest
   get '/graphql'  => 'api#graphql'
   get '/grpc'  => 'api#grpc'
   resources :posts
