@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/graphql'  => 'api#graphql'
   get '/grpc'  => 'api#grpc'
   resources :posts
-  #get '/'  => 'posts#index'
+  get '/posts/index'  => 'posts#index'
   #get '/'  => 'api#index'
 
   #authentication

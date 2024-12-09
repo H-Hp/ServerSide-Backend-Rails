@@ -13,11 +13,11 @@ default: &default
 development:
   <<: *default
   #database: db/development.sqlite3
-  database: serverside_backend_rails
-  host: localhost
-  port: 5432
-  username: Wondman
-  password: nikoniko777
+  database: <%= ENV["DB_LOCAL_DATABASE"] %>
+  host: <%= ENV["DB_LOCAL_HOST"] %>
+  port: <%= ENV["DB_LOCAL_PORT"] %>
+  username: <%= ENV["DB_LOCAL_USERNAME"] %>
+  password: <%= ENV["DB_LOCAL_PASSWORD"] %>
 
 
 # Warning: The database defined as "test" will be erased and
