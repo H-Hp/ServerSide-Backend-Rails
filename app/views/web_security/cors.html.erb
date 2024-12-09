@@ -1,0 +1,12 @@
+b
+
+<script>
+const APIKey="cc2437c8142273a5f96e368f14fd6a60"
+const city="tokyo"
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`)
+.then(response => response.json())
+.then(date => {
+console.log(date);
+});
+
+</script>
