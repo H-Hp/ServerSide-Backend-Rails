@@ -1,0 +1,13 @@
+<h1>Redis Demo</h1>
+
+<% if flash[:notice] %>
+  <p style="color: green;"><%= flash[:notice] %></p>
+<% end %>
+
+<p>Stored value: <%= @stored_value || 'No value set' %></p>
+
+<h2>Set a new value</h2>
+<%= form_tag redis_demo_path, method: :post do %>
+  <%= text_field_tag :value %>
+  <%= submit_tag "Set Value" %>
+<% end %>

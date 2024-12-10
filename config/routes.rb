@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   get '/cors'  => 'web_security#cors'  
 
   #cache_cdn
-  get '/redis'  => 'cache_cdn_redis#redis'
+  get '/redis_view'  => 'cache_cdn_redis#redis_view'
+  post 'redis_demo', to: 'cache_cdn_redis#set_value'
   
   #Designpatterns
   get '/gof_design_patterns'  => 'designpatterns#gof_design_patterns'
