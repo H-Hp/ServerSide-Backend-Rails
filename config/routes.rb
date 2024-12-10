@@ -2,13 +2,9 @@ Rails.application.routes.draw do
   root 'application#index'
 
   #API
-  get 'api/rest'
   resources :api_rest
   get '/graphql'  => 'api#graphql'
   get '/grpc'  => 'api#grpc'
-  resources :posts
-  get '/posts/index'  => 'posts#index'
-  #get '/'  => 'api#index'
 
   #authentication
   get '/basics'  => 'auth#basics'
@@ -44,8 +40,14 @@ Rails.application.routes.draw do
 
   #realtimedata
   get '/web_socket'  => 'realtimedata#web_socket'
-  get '/short_polling'  => 'realtimedata#short_polling'
-  get '/long_polling'  => 'realtimedata#long_polling'
-  get '/sse_server_sent_events'  => 'realtimedata#sse_server_sent_events'
 
+  get '/short_polling_view'  => 'realtimedata#short_polling_view'
+  get '/short_polling_update_data'  => 'realtimedata#short_polling_update_data'
+  
+  get '/long_polling_subscribe'  => 'realtimedata#long_polling_subscribe'
+  post '/long_polling_publish'  => 'realtimedata#long_polling_publish'
+  get '/long_polling_view'  => 'realtimedata#long_polling'
+  
+  get '/sse_server_sent_events'  => 'realtimedata#sse_server_sent_events'
+  get '/sse_server_sent_events_view'  => 'realtimedata#sse_server_sent_events_view'
 end

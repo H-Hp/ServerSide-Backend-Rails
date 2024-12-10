@@ -1,1 +1,8 @@
-a
+<div id="chat">
+  <div id="messages"></div>
+  <input id="message_input" type="text" placeholder="Type your message here...">
+  <button id="send_message">Send</button>
+</div>
+
+<!--jsはapp/javascript/channels/chat_channel.js-->
+<%= javascript_pack_tag 'chat_channel' %>
