@@ -1,0 +1,18 @@
+<h1>RabbitMQ Messages</h1>
+
+<h2>Send a message</h2>
+<%# メッセージ送信フォーム %>
+<%= form_with url: mq_rabbitmq_publish_path, local: true do |f| %>
+  <%= f.text_field :message %>
+  <%= f.submit "Send Message" %>
+<% end %>
+
+<h2 class="text-xl font-bold mt-6 mb-4">Receive a message</h2>
+<%# メッセージ受信リンク %>
+<%= link_to "Receive Message", mq_rabbitmq_subscribe_path, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+
+<%# フラッシュメッセージの表示 %>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+

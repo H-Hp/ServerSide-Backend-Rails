@@ -37,7 +37,11 @@ Rails.application.routes.draw do
   get '/elasticsearch'  => 'searchengines_elasticsearch#elasticsearch'
 
   #mq_rabbitmq
-  get '/mq_rabbitmq'  => 'mq_rabbitmq#index'
+  get '/mq_rabbitmq_view'  => 'mq_rabbitmq#index'
+  post '/mq_rabbitmq_publish'  => 'mq_rabbitmq#publish'
+  get '/mq_rabbitmq_subscribe'  => 'mq_rabbitmq#subscribe'
+  #get '/mq_rabbitmq_show'  => 'mq_rabbitmq#show'
+
 
   #realtimedata
   get '/web_socket'  => 'realtimedata#web_socket'

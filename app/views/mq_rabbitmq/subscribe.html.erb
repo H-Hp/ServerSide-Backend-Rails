@@ -1,0 +1,19 @@
+<div class="container mx-auto mt-8">
+  <h1 class="text-2xl font-bold mb-4">Received Message</h1>
+  
+  <%# メッセージが受信できた場合 %>
+  <% if @message %>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <p class="text-gray-700 text-base">
+        <%= @message %>
+      </p>
+    </div>
+  <%# メッセージが受信できなかった場合 %>
+  <% else %>
+    <p class="text-red-500">No message received.</p>
+  <% end %>
+
+  <%# メッセージ一覧ページへのリンク %>
+  <%= link_to 'Back to Messages', mq_rabbitmq_view_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+</div>
+

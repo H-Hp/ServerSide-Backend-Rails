@@ -34,6 +34,7 @@ gem 'pg', '1.5.6'
 gem 'dotenv-rails' 
 
 gem 'redis'
+gem 'bunny'
 
 
 group :development, :test do
