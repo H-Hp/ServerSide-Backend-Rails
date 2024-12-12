@@ -1,0 +1,52 @@
+
+<script>
+// CORS エラーを再現するコード
+//function fetchUsersWithError() {
+    // CORSエラーを発生させる（異なるオリジン）
+    //fetch('http://localhost:4000/api/cors_messages')
+    fetch('http://localhost:3000/api/cors_messages')
+        .then(response => response.json())
+        .then(data => {
+            console.log('data:', data);
+        })
+        .catch(error => {
+            console.error('CORS Error:', error);
+        });
+//}
+
+/*
+// CORS対応後のコード
+function fetchUsersSuccessfully() {
+    //fetch('http://localhost:4000/api/cors_messages', {
+    fetch('http://localhost:3000/api/cors_messages', {
+        method: 'GET',
+        credentials: 'include', // クッキーを含める
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('data:', data);
+    })
+    .catch(error => {
+        console.error('Fetch Error:', error);
+    });
+}
+
+// ページ読み込み時に実行
+//document.addEventListener('DOMContentLoaded', fetchUsersWithError);
+document.addEventListener('DOMContentLoaded', fetchUsersSuccessfully);
+*/
+</script>
+
+<script>
+const APIKey="cc2437c8142273a5f96e368f14fd6a60"
+const city="tokyo"
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`)
+.then(response => response.json())
+.then(date => {
+console.log(date);
+});
+
+</script>

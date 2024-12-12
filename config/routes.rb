@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   #web_security
   get 'web_security/hash'
   get '/csp'  => 'web_security#csp'
-  get '/cors'  => 'web_security#cors'  
+  get '/cors'  => 'web_security#cors' 
+  namespace :api do
+    resources :cors_messages, only: [:index]
+  end 
 
   #cache_cdn
   get '/redis_view'  => 'cache_cdn_redis#redis_view'

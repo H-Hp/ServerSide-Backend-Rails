@@ -1,12 +1,1 @@
-b
-
-<script>
-const APIKey="cc2437c8142273a5f96e368f14fd6a60"
-const city="tokyo"
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`)
-.then(response => response.json())
-.then(date => {
-console.log(date);
-});
-
-</script>
+app/views/web_security/cors.htmlをVSCodeのLiveServerで起動して別のオリジンからRailsのAPIにリクエスト送ると、このLiveServerのオリジンをサーバ側でcors設定してないとcorsエラーが起きる
