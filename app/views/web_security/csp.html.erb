@@ -1,12 +1,23 @@
-b
+  <h1>Content Security Policy Demo</h1>
+  
+  <!-- CSPエラーを引き起こす悪意のある外部スクリプト -->
+  <script src="https://malicious-site.com/evil-script.js"></script>
+  
+  <!-- 安全な外部スクリプトの読み込み（最初は失敗する） -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+  
+  <!-- インラインスクリプト（最初は失敗する） -->
+  <script>
+    alert('This inline script will be blocked initially');
+  </script>
 
-<script>
-const APIKey="cc2437c8142273a5f96e368f14fd6a60"
-const city="tokyo"
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`)
-.then(response => response.json())
-.then(date => {
-console.log(date);
-});
-
-</script>
+  <!-- ナンスを使用したインラインスクリプト -->
+  <script nonce="<%= content_security_policy_nonce %>">
+    console.log('Nonce-based inline script is now allowed');
+  </script>
+  
+  <!-- より安全なスクリプト読み込み -->
+  <div id="message"></div>
+  <script nonce="<%= content_security_policy_nonce %>">
+    document.getElementById('message').textContent = 'CSP is now configured securely!';
+  </script>

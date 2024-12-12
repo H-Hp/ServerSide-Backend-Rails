@@ -35,6 +35,5 @@ class WebSecurityController < ApplicationController
   end
 
   def csp
-    
   end
 end

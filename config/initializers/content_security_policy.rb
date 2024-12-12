@@ -1,3 +1,64 @@
+
+
+# config/initializers/content_security_policy.rb
+Rails.application.config.content_security_policy do |policy|
+  # より柔軟なCSP設定
+  policy.default_src :self
+  
+  # 信頼できるCDNからのスクリプトを許可
+  policy.script_src :self, 
+                    :unsafe_inline, 
+                    'https://cdn.jsdelivr.net', 
+                    'https://cdnjs.cloudflare.com'
+  
+  # 外部スタイルシートも許可
+  policy.style_src :self, 
+                   :unsafe_inline, 
+                   'https://cdn.jsdelivr.net'
+  
+  # 画像の許可ドメインを拡大
+  policy.img_src :self, 
+                 'https://example.com', 
+                 'https://placekitten.com'
+  
+  # フォントリソースの許可
+  policy.font_src :self, 
+                  'https://fonts.gstatic.com', 
+                  'https://fonts.googleapis.com'
+end
+
+
+=begin cspエラー発生用
+Rails.application.config.content_security_policy do |policy|
+  # デフォルトではすべてのリソースをブロック
+  policy.default_src :none
+  
+  # スクリプトは自身のオリジンからのみ許可
+  policy.script_src :self
+  
+  # スタイルシートは自身のオリジンから
+  policy.style_src :self
+  
+  # 画像は自身のオリジンと特定の外部ドメインから
+  policy.img_src :self, 'https://example.com'
+  
+  # フォントは自身のオリジンから
+  policy.font_src :self
+  
+  # フレームは許可しない
+  policy.frame_src :none
+  
+  # インラインスクリプトは無効化
+  policy.script_src :self, :unsafe_inline
+end
+
+# CSPヘッダーを有効化
+Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }
+Rails.application.config.content_security_policy_nonce_directives = %w(script-src)
+=end
+
+
+
 # Be sure to restart your server when you modify this file.
 
 # Define an application-wide content security policy
