@@ -1,0 +1,40 @@
+<div>
+CSRF攻撃の仕組み
+
+攻撃者が罠のページを作成
+ページ読み込み時に自動的にフォームを送信
+ユーザーの認証情報を利用して不正なリクエストを実行
+ユーザーは気づかないうちに操作される
+</div>
+
+
+<h1>CSRF Demo</h1>
+
+
+<%= link_to("ログアウト", "/csrf_logout", {method: "post"}) %>
+
+
+<div id="logout-result"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const logoutLink = document.getElementById('logout-link');
+  const resultDiv = document.getElementById('logout-result');
+
+  logoutLink.addEventListener('ajax:success', function(event) {
+    const [data, status, xhr] = event.detail;
+    
+    // サーバーからのレスポンスを表示
+    resultDiv.innerHTML = `
+      <p>メッセージ: ${data.message}</p>
+      <p>アクセストークン: ${data.access_token}</p>
+    `;
+  });
+
+  logoutLink.addEventListener('ajax:error', function(event) {
+    const [data, status, xhr] = event.detail;
+    
+    resultDiv.innerHTML = 'ログアウトに失敗しました';
+  });
+});
+</script>

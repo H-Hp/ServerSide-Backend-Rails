@@ -17,12 +17,17 @@ Rails.application.routes.draw do
 
 
   #web_security
-  get 'web_security/hash'
+  #get 'web_security/hash'
+  get '/hash'  => 'web_security#hash' 
+  post '/bcrypt_longin'  => 'web_security#bcrypt_longin' 
   get '/csp'  => 'web_security#csp'
   get '/cors'  => 'web_security#cors' 
   namespace :api do
     resources :cors_messages, only: [:index]
   end 
+  get '/csrf'  => 'web_security#csrf'
+  post 'csrf_logout' => 'web_security#csrf_logout' 
+  
 
   #cache_cdn
   get '/redis_view'  => 'cache_cdn_redis#redis_view'

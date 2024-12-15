@@ -1,2 +1,20 @@
 <h1>WebSecurity#hash</h1>
-<p>Find me in app/views/web_security/hash.html.erb</p>
+
+
+<h1>Bcrypt Login</h1>
+<div>
+いつユーザーのパスワードをハッシュ化させるのか？：Bcryptを使用してユーザーのパスワードをハッシュ化する最適なタイミングは、ユーザーの新規登録時、つまりパスワードをサーバー側で受け取った直後。ハッシュ化させたパスワードをDBに格納し、ログイン認証時に入力されたパスワードを同じ方法でハッシュ化し、データベースに保存されているハッシュと比較することができます。
+</div>
+
+<%= form_tag bcrypt_longin_path, method: :post do %>
+
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <%= submit_tag "Login" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>

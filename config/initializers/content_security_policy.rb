@@ -1,5 +1,5 @@
 
-
+=begin
 # config/initializers/content_security_policy.rb
 Rails.application.config.content_security_policy do |policy|
   # より柔軟なCSP設定
@@ -27,6 +27,7 @@ Rails.application.config.content_security_policy do |policy|
                   'https://fonts.googleapis.com'
 end
 
+=end
 
 =begin cspエラー発生用
 Rails.application.config.content_security_policy do |policy|
@@ -51,6 +52,7 @@ Rails.application.config.content_security_policy do |policy|
   # インラインスクリプトは無効化
   policy.script_src :self, :unsafe_inline
 end
+
 
 # CSPヘッダーを有効化
 Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }

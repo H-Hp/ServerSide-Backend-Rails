@@ -1,10 +1,13 @@
 class AuthController < ApplicationController
-  def basics
 
+  http_basic_authenticate_with name: "admin", password: "secret", only: :basics
+  def basics
   end
+
   def cookie
 
   end
+
   def sessions
 
   end
@@ -27,6 +30,5 @@ class AuthController < ApplicationController
   def sso
 
   end
-=begin
-=end
+
 end
