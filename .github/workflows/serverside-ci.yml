@@ -100,6 +100,8 @@ jobs:
           #bundle exec rails db:schema:load
 
       - name: asset compile
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         run: |
             bundle exec rails assets:precompile
             bundle exec rails assets:clean
