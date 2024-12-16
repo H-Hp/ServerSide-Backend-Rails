@@ -80,7 +80,6 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          RAILS_ENV: test
           POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
