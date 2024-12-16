@@ -61,11 +61,14 @@ jobs:
       - name: Setup Database
         env:
           RAILS_ENV: test
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         run: |
-          cp config/database.yml.github-actions config/database.yml
+          #cp config/database.yml.github-actions config/database.yml
           bundle exec rails db:create
-          bundle exec rails db:schema:load
+          bundle exec rails db:migrate
+          #bundle exec rails db:schema:load
+
 
       # テストを実行します。
       - name: Run tests
