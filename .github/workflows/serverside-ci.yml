@@ -60,6 +60,11 @@ jobs:
           # yarnのキャッシュを使用する設定
           cache: 'yarn'
 
+      # 環境変数セット
+      - name: Set Node.js environment
+        run: |
+          echo "NODE_OPTIONS=--openssl-legacy-provider" >> $GITHUB_ENV
+
       # npm install
       - name: npm Install dependencies
       # プロジェクトの依存関係をインストール
