@@ -53,8 +53,9 @@ jobs:
       # 依存関係をインストールします。
       - name: Install dependencies
         run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
+          # Bundlerの特定バージョンをインストール
+          gem install bundler -v 2.4.22
+          bundle install
 
       # テスト用のデータベースをセットアップします。
       - name: Setup Database
