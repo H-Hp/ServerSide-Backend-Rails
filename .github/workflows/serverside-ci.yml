@@ -1,0 +1,82 @@
+# 任意のワークフローの名前を定義・ワークフローの名前を定義します。GitHub Actionsのダッシュボードに表示されます。
+name: serverside-ci
+
+#どのGitHubイベントに対して実行されるかを定義
+on:
+  # メインブランチにpushがあったときにワークフローを実行
+  push:
+    branches: [ main ]
+  # メインブランチに対するプルリクエストが作成されたときにワークフローを実行
+  pull_request:
+    branches: [ main ]
+
+# このワークフローで実行されるジョブを定義
+jobs:
+  # 'test-job'という名前のジョブを定義します。
+  test-job:
+
+    # このジョブを実行する環境（GitHub Actionsランナー）を指定・ このジョブが実行されるOS環境を指定します。ここではUbuntuの最新版を使用します。
+    # 今回はubuntuを指定
+    runs-on: ubuntu-latest
+
+    # このジョブで使用するサービス（この場合はPostgreSQL）を定義します。
+    services:
+      # PostgreSQLサービスを設定します。
+      postgres:
+        # 使用するPostgreSQLのDockerイメージを指定します。
+        image: postgres:15
+        # PostgreSQLの環境変数を設定します。
+        env:
+          POSTGRES_PASSWORD: postgres
+        # コンテナのポートマッピングを設定します。
+        ports:
+          - 5432:5432
+        # サービスのヘルスチェックオプションを設定します。
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+  
+    # 自動化したい作業を定義
+    steps:
+      # 実行環境にソースコードを取り込む
+      - uses: actions/checkout@v3
+
+      # Rubyの環境をセットアップします。
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # 使用するRubyのバージョンを指定します。プロジェクトに合わせて変更してください。
+          ruby-version: 2.7.3
+
+      # 依存関係をインストールします。
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+
+      # テスト用のデータベースをセットアップします。
+      - name: Setup Database
+        env:
+          RAILS_ENV: test
+          POSTGRES_PASSWORD: postgres
+        run: |
+          cp config/database.yml.github-actions config/database.yml
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+
+      # テストを実行します。
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          POSTGRES_PASSWORD: postgres
+        run: bundle exec rspec
+
+      # テストカバレッジレポートをアップロードします。
+      - name: Upload coverage results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage
