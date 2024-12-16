@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'my_test/hello'
   root 'application#index'
 
   #API

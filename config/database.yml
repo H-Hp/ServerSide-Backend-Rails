@@ -26,6 +26,11 @@ development:
 test:
   <<: *default
   #database: db/test.sqlite3
+  database: <%= ENV["DB_LOCAL_DATABASE"] %>
+  host: <%= ENV["DB_LOCAL_HOST"] %>
+  port: <%= ENV["DB_LOCAL_PORT"] %>
+  username: <%= ENV["DB_LOCAL_USERNAME"] %>
+  password: <%= ENV["DB_LOCAL_PASSWORD"] %>
 
 production:
   <<: *default
