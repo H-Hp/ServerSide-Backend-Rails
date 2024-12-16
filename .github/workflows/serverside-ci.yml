@@ -61,7 +61,6 @@ jobs:
       - name: Setup Database
         env:
           RAILS_ENV: test
-          POSTGRES_USER: ${{secrets.POSTGRES_USER}}
           POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
         run: |
           #cp config/database.yml.github-actions config/database.yml
