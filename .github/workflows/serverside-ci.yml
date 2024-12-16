@@ -40,11 +40,30 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-  
+    strategy:
+      matrix:
+        # 使用するNode.jsのバージョンを定義
+        node-version: [18.14.1]
+
     # 自動化したい作業を定義
     steps:
       # 実行環境にソースコードを取り込む
       - uses: actions/checkout@v3
+
+      #Node.jsセットアップ
+      - name: Use Node.js ${{ matrix.node-version }}
+        # Node.jsのセットアップに必要な設定
+        uses: actions/setup-node@v3
+        with:
+          # Node.jsのバージョンを指定
+          node-version: ${{ matrix.node-version }}
+          # yarnのキャッシュを使用する設定
+          cache: 'yarn'
+
+      # npm install
+      - name: npm Install dependencies
+      # プロジェクトの依存関係をインストール
+        run: npm install
 
       # Rubyの環境をセットアップします。
       - name: Set up Ruby
