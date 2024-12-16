@@ -111,7 +111,7 @@ jobs:
           NODE_OPTIONS: --openssl-legacy-provider
         run: |
           bundle exec rails webpacker:install
-          bundle exec rails webpacker:compile
+          #bundle exec rails webpacker:compile
 
       # テストを実行します。
       - name: Run tests
