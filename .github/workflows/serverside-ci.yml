@@ -28,7 +28,9 @@ jobs:
         # PostgreSQLの環境変数を設定します。
         env:
           #POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: serverside_backend_rails_test
         # コンテナのポートマッピングを設定します。
         ports:
           - 5432:5432
@@ -62,9 +64,11 @@ jobs:
       - name: Setup Database ${{secrets.POSTGRES_PASSWORD}}
         env:
           RAILS_ENV: test
+          POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
-          #POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
           POSTGRES_PASSWORD: postgres
+          POSTGRES_PORT: 5432
+          #POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
         run: |
           cp config/database.yml.github-actions config/database.yml
           bundle exec rails db:create
@@ -76,7 +80,11 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+          RAILS_ENV: test
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_PORT: 5432
         run: bundle exec rspec
 
       # テストカバレッジレポートをアップロードします。
