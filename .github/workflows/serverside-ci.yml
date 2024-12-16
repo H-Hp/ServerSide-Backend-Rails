@@ -75,6 +75,12 @@ jobs:
           bundle exec rails db:migrate
           #bundle exec rails db:schema:load
 
+      - name: Webpacker precompile
+        env:
+          RAILS_ENV: test
+        run: |
+          bundle exec rails webpacker:install
+          bundle exec rails webpacker:compile
 
       # テストを実行します。
       - name: Run tests
