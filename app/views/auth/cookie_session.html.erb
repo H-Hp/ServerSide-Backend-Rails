@@ -1,0 +1,14 @@
+<h1>cookie session認証</h1>
+
+
+<% if logged_in? %>
+  <p>ようこそ、<%= current_user.email %>さん</p>
+  <%= link_to 'ログアウト', session_logout_path, method: :delete %>
+<% else %>
+  <p>ログインしていません</p>
+  <%= link_to 'ログイン', session_new_path %>
+  <%= link_to '新規登録', user_new_path %>
+<% end %>
+
+
+<%= link_to 'home', root_path %>

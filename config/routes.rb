@@ -9,8 +9,15 @@ Rails.application.routes.draw do
 
   #authentication
   get '/basics'  => 'auth#basics'
-  get '/cookie'  => 'auth#cookie'
-  get '/session'  => 'auth#sessions'
+  
+  get '/cookie_session'  => 'auth#cookie_session'
+  get '/user_new'  => 'auth#cookie_session_user_new' #ユーザー新規登録ページ表示
+  post '/user_create'  => 'auth#cookie_session_user_create' #ユーザー新規登録処理
+  get '/session_new'  => 'auth#sessions_new' #ログインページ表示
+  post '/session_login'  => 'auth#sessions_create' #ログイン処理
+  delete '/session_logout', to: 'auth#sessions_destroy' #ログアウト処理
+  resources :cookie_session, only: [:show]
+
   get '/token_auth'  => 'auth#token_auth'
   get '/jwt'  => 'auth#jwt'
   get '/oauth'  => 'auth#oauth'
