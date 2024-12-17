@@ -63,6 +63,7 @@ GEM
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     amq-protocol (2.3.2)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     bindex (0.8.1)
     bootsnap (1.18.4)
@@ -99,6 +100,8 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jwt (2.9.3)
+      base64
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -270,6 +273,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   dotenv-rails
   jbuilder (~> 2.7)
+  jwt
   listen (~> 3.3)
   pg (= 1.5.6)
   puma (~> 5.0)

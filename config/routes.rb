@@ -18,8 +18,12 @@ Rails.application.routes.draw do
   delete '/session_logout', to: 'auth#sessions_destroy' #ログアウト処理
   resources :cookie_session, only: [:show]
 
-  get '/token_auth'  => 'auth#token_auth'
-  get '/jwt'  => 'auth#jwt'
+  # jwtのトークンベース認証のエンドポイント
+  get '/jwt'  => 'auth_jwt#jwt'
+  post '/jwt_register', to: 'auth_jwt#register'
+  post '/jwt_login', to: 'auth_jwt#login'
+  get '/jwt_profile', to: 'auth_jwt#profile'
+
   get '/oauth'  => 'auth#oauth'
   get '/sso'  => 'auth#sso'
 

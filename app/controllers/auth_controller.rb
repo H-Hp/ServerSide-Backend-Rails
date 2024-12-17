@@ -73,16 +73,6 @@ class AuthController < ApplicationController
   end
 
 
-
-
-  def token_auth
-
-  end
-
-  def jwt
-
-  end
-
   def oauth
 
   end
