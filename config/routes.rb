@@ -27,6 +27,12 @@ Rails.application.routes.draw do
   get '/oauth'  => 'auth#oauth'
   get '/sso'  => 'auth#sso'
 
+  get '/saml'  => 'auth_saml#saml'
+  get '/saml_sso'  => 'auth_saml#sso'
+  post '/saml_acs', to: 'auth_saml#acs'
+  get '/saml/metadata', to: 'auth_saml#metadata'
+  #delete '/saml_logout', to: 'auth_saml#delete'
+
 
   #web_security
   #get 'web_security/hash'

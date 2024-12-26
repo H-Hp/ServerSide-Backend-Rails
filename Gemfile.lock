@@ -202,6 +202,9 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.2)
+    ruby-saml (1.17.0)
+      nokogiri (>= 1.13.10)
+      rexml
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -282,6 +285,7 @@ DEPENDENCIES
   rails (~> 6.1.7, >= 6.1.7.10)
   redis
   rspec-rails
+  ruby-saml
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
