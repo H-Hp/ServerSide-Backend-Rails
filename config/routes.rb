@@ -81,4 +81,10 @@ Rails.application.routes.draw do
   
   get '/sse_server_sent_events'  => 'realtimedata#sse_server_sent_events'
   get '/sse_server_sent_events_view'  => 'realtimedata#sse_server_sent_events_view'
+
+
+  #Frontend
+  get '/bem'  => 'frontend#bem'
+
+  
 end
