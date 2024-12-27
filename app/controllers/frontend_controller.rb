@@ -8,4 +8,6 @@ class FrontendController < ApplicationController
   end
   def typescript
   end
+  def tailwind
+  end
 end

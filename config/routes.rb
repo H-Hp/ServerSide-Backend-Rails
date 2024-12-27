@@ -88,6 +88,6 @@ Rails.application.routes.draw do
   get '/react'  => 'frontend#react'
   get '/vue', to: 'frontend#vue'
   get '/typescript', to: 'frontend#typescript'
-
+  get '/tailwind', to: 'frontend#tailwind'
   
 end
