@@ -87,5 +87,7 @@ Rails.application.routes.draw do
   get '/bem'  => 'frontend#bem'
   get '/react'  => 'frontend#react'
   get '/vue', to: 'frontend#vue'
+  get '/typescript', to: 'frontend#typescript'
+
   
 end

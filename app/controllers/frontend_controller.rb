@@ -6,4 +6,6 @@ class FrontendController < ApplicationController
   end
   def vue
   end
+  def typescript
+  end
 end
