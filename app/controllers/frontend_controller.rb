@@ -4,4 +4,6 @@ class FrontendController < ApplicationController
   end
   def react
   end
+  def vue
+  end
 end
