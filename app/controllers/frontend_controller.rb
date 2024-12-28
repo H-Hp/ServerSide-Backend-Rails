@@ -10,4 +10,7 @@ class FrontendController < ApplicationController
   end
   def tailwind
   end
+  def web_component
+  end
+
 end

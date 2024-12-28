@@ -1,0 +1,118 @@
+<div>
+Web Componentsとは
+カスタム要素、Shadow DOM、HTML テンプレートによって再利用可能なUIコンポーネントを作成する技術
+</div>
+
+<!--カスタム要素-->
+<h1>カスタム要素</h1>
+<p>独自のHTMLタグを定義する技術です。既存のHTMLタグ(a, pタグなど)を拡張することもできます。カスタム要素の定義にはwindow.customElements.define関数を利用します。独自のタグを作り使い回せるので便利</p>
+<my-title></my-title>
+<script>
+  class MyTitle extends HTMLElement {
+    constructor() { 
+      super(); 
+    }
+
+    connectedCallback() {
+      const title = document.createElement('h1');
+      title.textContent = 'タイトル';
+      this.appendChild(title);
+    }
+  }
+  customElements.define('my-title', MyTitle);
+</script>
+
+
+
+<!--Shadow DOM-->
+<h1>Shadow DOM</h1>
+<p>外側</p>
+<style>p {color: blue;}</style>
+
+<!-- ここの配下を Shadow DOMにする-->
+<div id="shadowHost"></div>
+
+<script>
+  // Shadow HostにShadowDomを生成する
+  const shadowHost = document.getElementById('shadowHost');
+  const shadow = shadowHost.attachShadow({mode: "open"});
+
+  // Shadow DOMの中身を生成する
+  const title = document.createElement('p');
+  title.textContent = 'Shadow Dom 内';
+  const style = document.createElement('style');
+  style.textContent = 'p {color: red;}';
+  const container = document.createElement('div');
+  container.appendChild(title);
+  container.appendChild(style);
+
+  // Shadow DOMに中身を追加する
+  shadow.appendChild(container);
+</script>
+
+
+
+<!--HTML テンプレート-->
+<h1>HTML テンプレート</h1>
+
+<!-- HTML Template の定義 -->
+<template id="title-template">
+  <h1>
+    <slot name="text">デフォルトのテキスト</slot>
+  </h1>
+</template>
+
+<!-- HTML Template をここに埋め込む -->
+<div id="container">
+  <!-- 埋め込む際に利用されるslot要素 -->
+  <p slot="text">スロットに代入するテキスト</p>
+</div>
+
+<script>
+  const titleTemplate = document.getElementById('title-template');
+  const title = titleTemplate.content.cloneNode(true);
+
+  const shadowRoot = document.getElementById('container').attachShadow({mode: "closed"});
+  shadowRoot.appendChild(title);
+</script>
+
+
+
+
+<!-- 3つの技術を組み合わせ -->
+<h1>3つの技術を組み合わせ</h1>
+上記の要素技術を組み合わせて、WebComponentsはこんな感じに記述できます。
+
+<!-- WebComponents用のテンプレート -->
+<template id="title-template">
+  <div>
+    <slot name="title">デフォルト</slot>
+    <slot name="subtitle">デフォルト</slot>
+    <p>パラグラフ</p>
+  </div>
+
+  <style>
+    p { color: blue; }
+  </style>
+</template>
+
+<script>
+  // カスタム要素用のクラスを作成する
+  class MyTitle extends HTMLElement {
+    constructor() {
+      super();
+      const template = document.getElementById('title-template');
+      const title = template.content.cloneNode(true);
+
+      const shadowRoot = this.attachShadow({mode: "closed"});
+      shadowRoot.appendChild(title);
+    }
+  }
+  customElements.define('my-title', MyTitle);
+</script>
+
+<my-title>
+  // 実際に利用する際に、title, subtitleにslotに代入する値をセットする
+  <p slot="title">タイトル</p>
+  <p slot="subtitle">サブタイトル</p>
+</my-title>
