@@ -5,16 +5,15 @@ name: serverside-ci
 on:
   # メインブランチにpushがあったときにワークフローを実行
   push:
-    branches: [ main ]
+    branches: [main]
   # メインブランチに対するプルリクエストが作成されたときにワークフローを実行
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # このワークフローで実行されるジョブを定義
 jobs:
   # 'test-job'という名前のジョブを定義します。
   test-job:
-
     # このジョブを実行する環境（GitHub Actionsランナー）を指定・ このジョブが実行されるOS環境を指定します。ここではUbuntuの最新版を使用します。
     # 今回はubuntuを指定
     runs-on: ubuntu-latest
@@ -58,12 +57,11 @@ jobs:
           # Node.jsのバージョンを指定
           node-version: ${{ matrix.node-version }}
           # yarnのキャッシュを使用する設定
-          cache: 'yarn'
-
+          cache: "yarn"
 
       # npm install
       - name: npm Install dependencies
-      # プロジェクトの依存関係をインストール
+        # プロジェクトの依存関係をインストール
         run: npm install
 
       # Rubyの環境をセットアップします。
@@ -99,8 +97,8 @@ jobs:
         env:
           NODE_OPTIONS: --openssl-legacy-provider
         run: |
-            bundle exec rails assets:precompile
-            bundle exec rails assets:clean
+          bundle exec rails assets:precompile
+          bundle exec rails assets:clean
 
       - name: Webpacker precompile
         env:

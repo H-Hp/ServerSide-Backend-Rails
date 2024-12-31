@@ -1,8 +1,6 @@
 // app/javascript/components/HelloReact.jsx
-import React from 'react'
+import React from "react";
 
-const HelloReact = () => (
-  <div>Hello from React!</div>
-)
+const HelloReact = () => <div>Hello from React!</div>;
 
-export default HelloReact
+export default HelloReact;

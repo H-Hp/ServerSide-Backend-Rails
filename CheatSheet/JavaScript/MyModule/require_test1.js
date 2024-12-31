@@ -1,3 +1,3 @@
-module.exports = function() {
-    console.log('requireテスト・Hello World!!');
-}
+module.exports = function () {
+  console.log("requireテスト・Hello World!!");
+};

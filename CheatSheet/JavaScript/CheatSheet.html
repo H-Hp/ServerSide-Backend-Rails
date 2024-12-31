@@ -1,264 +1,248 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="jp">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>JavaScriptのチートシート</title>
-</head>
-<body>
-<div id="Wrapper">
-<h2>JavaScriptのチートシート</h2>
+  </head>
+  <body>
+    <div id="Wrapper">
+      <h2>JavaScriptのチートシート</h2>
 
-<h2>テンプレートリテラル</h2>
-<p id="template_1">書き換え</p>
+      <h2>テンプレートリテラル</h2>
+      <p id="template_1">書き換え</p>
 
-<hr>
+      <hr />
 
-<h1>モジュール・require・import・export</h1>
-<p>ターミナルから「$ http-server」でやらないとCORSエラーで外部ファイルが読み込めない</p>
-<h3>例1・外部ファイルの1つのクラスを読み込む例</h3>
-<p id="Module_1">例1のテキスト</p>
-<h3>例2・外部ファイルの1つのクラスを読み込む例</h3>
-<p id="Module_2">例2のテキスト</p>
-<h3>例3・functionのモジュールを読み込む例</h3>
-<p id="Module_3">例3のテキスト</p>
+      <h1>モジュール・require・import・export</h1>
+      <p>
+        ターミナルから「$
+        http-server」でやらないとCORSエラーで外部ファイルが読み込めない
+      </p>
+      <h3>例1・外部ファイルの1つのクラスを読み込む例</h3>
+      <p id="Module_1">例1のテキスト</p>
+      <h3>例2・外部ファイルの1つのクラスを読み込む例</h3>
+      <p id="Module_2">例2のテキスト</p>
+      <h3>例3・functionのモジュールを読み込む例</h3>
+      <p id="Module_3">例3のテキスト</p>
 
-<hr>
-<button onClick="alert('アラートですね');">alert・警告ダイアログ表示</button>
+      <hr />
+      <button onClick="alert('アラートですね');">
+        alert・警告ダイアログ表示
+      </button>
 
-<button onClick="Date_func()">Date・現在時間を表示</button>
-<div><span>現在時間は、</span><span id="NowDateTime">○○:○○</span></div>
+      <button onClick="Date_func()">Date・現在時間を表示</button>
+      <div><span>現在時間は、</span><span id="NowDateTime">○○:○○</span></div>
+    </div>
+    <!--Wrapper-->
+    <script>
+      //strictモード
+      //strictモードとは、javascriptのコードをより厳しくエラーチェックすることができる仕組みです。通常エラーとなっていなかったバグになりそうなコードに対して、エラーを表示することができます
+      //strictは全体に設定する場合と、関数に設定する場合があります。全体に設定する場合は、コードの一番上に「"use strict";」を書きます
+      //"use strict";
 
-</div><!--Wrapper-->
-<script>
+      //console.log
+      console.log("console.log・シングルクオーテーション");
+      console.log("console.log・ダブルクオーテーション");
+      console.log(5); //5
+      console.log(1 + 2); //3・計算もできる
+      console.log(3 - 2); //1
 
-//strictモード
-//strictモードとは、javascriptのコードをより厳しくエラーチェックすることができる仕組みです。通常エラーとなっていなかったバグになりそうなコードに対して、エラーを表示することができます
-//strictは全体に設定する場合と、関数に設定する場合があります。全体に設定する場合は、コードの一番上に「"use strict";」を書きます
-//"use strict";
-
-
-//console.log
-console.log('console.log・シングルクオーテーション');
-console.log("console.log・ダブルクオーテーション");
-console.log(5);//5
-console.log(1+2);//3・計算もできる
-console.log(3-2);//1
-
-
-//コメントアウト・2種類
-//1行をコメントアウト
-/*
+      //コメントアウト・2種類
+      //1行をコメントアウト
+      /*
 複数行をコメントアウト 
 */
 
-//変数
-//let const var
-//変数を定義するときは、値の再代入が不要な場合はconst、そうではない場合はletを使う
-var a ="a";
-var a = 3;//変数aを上書き
-a="ss"//さらに上書き
-var b=2;
-console.log("変数を出力:"+a);
+      //変数
+      //let const var
+      //変数を定義するときは、値の再代入が不要な場合はconst、そうではない場合はletを使う
+      var a = "a";
+      var a = 3; //変数aを上書き
+      a = "ss"; //さらに上書き
+      var b = 2;
+      console.log("変数を出力:" + a);
 
+      //演算子
 
-//演算子
+      //
 
+      //ループ・イテレーター
+      //for
 
-//
+      //do while
 
-//ループ・イテレーター
-//for
+      //
 
-//do while
+      //条件分岐
+      //if else
 
-//
+      //switch
 
+      //例外処理//エラーハンドリング
+      try {
+        var greeting = "こんにちは、" + name + "です。";
+        console.log(greeting);
+      } catch (e) {
+        console.log(e.message);
+      }
 
-//条件分岐
-//if else
+      //関数・function
+      //ES5における関数宣言の方法は3種類存在する。
 
+      //通常のfunction命令
+      function str(arg1, arg2) {
+        console.log("hoge");
+      }
 
-//switch
+      //Functionコンストラクター（あまり使用しない）
+      var str = new Function("arg1", "arg2", "console.log('hoge')");
 
+      //関数リテラル（匿名関数を利用）
+      var str = function (arg1, arg2) {
+        console.log("hoge");
+      };
 
+      //コールバック関数
+      //下の処理の流れは呼び出しているのでtomatoが出発点で、tomato関数にpriceメソッドを渡している(これがコールバック関数)
+      function tomato(price, func) {
+        const name = "トマト";
+        func(name, price); //priceメソッドを引数で受け取っているのでfunc=price
+      }
+      const price = function (name, price) {
+        console.log(name + " の値段は " + price + " 円です。");
+      };
+      tomato(100, price); //>> トマト の値段は 100 円です。
 
+      //コールバック例2
+      setTimeout(function () {
+        console.log("コールバック例2:Hello!");
+      }, 2000); //setTimeoutの中に関数が入っているので、中のfunctionがコールバック関数
 
-//例外処理//エラーハンドリング
-try {
-    var greeting = "こんにちは、" + name + "です。";
-    console.log( greeting );
-} catch(e) {
-    console.log( e.message );
-}
+      //即時関数
+      var sum = (function (a, b) {
+        var result = a + b;
+        return result;
+      })(1, 2);
+      console.log("即時関数:" + sum);
+    </script>
 
+    <script>
+      //テンプレートリテラル
+      var template_name = "hoge";
+      var template_age = 13;
+      console.log(
+        `テンプレートリテラル:My name is "${template_name}" and I'm ${template_age} years old.`,
+      ); // My name is "hoge" and I'm 13 years old.
+      let temp_1 = `はははっは
+はっはは`; //brを入れずに改行できる・htmlに渡しても改行はされない(brを入れないと)
 
+      var template_1 = document.getElementById("template_1");
+      //template_1.innerHTML = '<b>テンプレートリテラル書き換え成功:</b>' + template_1.innerHTML;
+      //template_1.innerHTML = '<b>テンプレートリテラル書き換え成功:</b>' ;
+      template_1.innerHTML = temp_1;
 
-//関数・function
-//ES5における関数宣言の方法は3種類存在する。
+      //アロー関数
+      //ES6では、アロー関数を利用することで関数リテラルをシンプルに記述できる
+      //なお、関数リテラルとは、後述のthisの挙動が異なる
+      var str = (arg1, arg2) => {
+        console.log("hoge");
+      };
+      //アロー関数は、引数が1つの場合に限って、下のように引数の()を省略して書くことができる（引数が0個の場合は省略できない）
+      //また、下の例のように1行に収まる場合、{}も省略してよい
+      var str = (arg1) => console.log(arg1);
+      //アロー関数がオブジェクトリテラルを返す場合は、下のように、全体を()で囲う必要がある
+      var str = (func) => ({ id: "8" });
 
-//通常のfunction命令
-function str(arg1, arg2) {
-  console.log('hoge');
-}
+      //let const var・変数の定義
+      //ES6では、従来のvarに加えて新しくlet・constというシンタックスを使えるようになった
+      //varの使い道
+      //let・・・変数の再宣言ができない
+      //const・・・変数への再宣言と再代入ができない
+      //let
+      //letを用いた場合、以下のように一度宣言された変数と同名の変数を再度宣言することができない（変数への再代入はできる）
+      let x = 10;
+      x = 15; //再代入は可能
+      console.log(x); // 15
+      //let x = 12; //これは再定義なのでエラー// Identifier 'x' has already been declared
+      //const
+      //constは定数のような役割をしており、一度初期化した変数への再代入が認められない
+      const y = 10;
+      console.log(y); // 10
+      //x = 15; //再代入なのでエラー// TypeError: Assignment to constant variable.
 
-//Functionコンストラクター（あまり使用しない）
-var str = new Function("arg1", "arg2", "console.log('hoge')");
+      //配列
+      //1つずつ定義する例
+      var result = new Array(5);
+      result[0] = 85;
+      result[1] = 78;
+      //まとめて定義する例
+      var result = [85, 78, 92, 62, 69];
 
-//関数リテラル（匿名関数を利用）
-var str = function(arg1, arg2) {
-  console.log('hoge');
-}
+      //連想配列
 
-//コールバック関数
-//下の処理の流れは呼び出しているのでtomatoが出発点で、tomato関数にpriceメソッドを渡している(これがコールバック関数)
-function tomato(price, func){
-  const name = 'トマト';
-  func(name, price);//priceメソッドを引数で受け取っているのでfunc=price
-}
-const price = function(name, price){
-  console.log(name + ' の値段は ' + price + ' 円です。');
-}
-tomato(100, price);//>> トマト の値段は 100 円です。
+      //多次元配列・2次元配列
 
-//コールバック例2
-setTimeout(function() { console.log('コールバック例2:Hello!'); }, 2000);//setTimeoutの中に関数が入っているので、中のfunctionがコールバック関数
+      //正規表現
+    </script>
 
+    <script type="module">
+      //モジュール
+      //別のファイルを読み込み
 
-//即時関数
-var sum = (function (a,b){
-  var result = a + b;
-  return result;
-})(1,2);
-console.log("即時関数:"+sum);
+      //import
+      //import分はいままでscriptタグを使わないとJs外部ファイルを読み込めなかったものをJsコードないから読み込める
 
-</script>
+      //例1・1つのクラスを読み込む例
+      //import { Member } from './MyModule/Util'//エラー
+      import { Member } from "./MyModule/Util.js"; //成功・.jsが必要
+      var m = new Member("太郎", "山田"); //インスタンス生成
+      console.log("例1:" + m.getName()); // 田中太郎
+      document.getElementById("Module_1").innerText = m.getName();
 
-<script>
-//テンプレートリテラル
-var template_name = "hoge";
-var template_age = 13;
-console.log(`テンプレートリテラル:My name is "${template_name}" and I'm ${template_age} years old.`);// My name is "hoge" and I'm 13 years old.
-let temp_1=`はははっは
-はっはは`;//brを入れずに改行できる・htmlに渡しても改行はされない(brを入れないと)
+      //例2・1つのクラスを読み込む例
+      import { helloWorld } from "./MyModule/HelloWorld.js";
+      helloWorld();
+      //document.getElementById("Module_2").innerText=helloWorld();
 
-var template_1 = document.getElementById('template_1');
-//template_1.innerHTML = '<b>テンプレートリテラル書き換え成功:</b>' + template_1.innerHTML;
-//template_1.innerHTML = '<b>テンプレートリテラル書き換え成功:</b>' ;
-template_1.innerHTML = temp_1 ;
+      //例3・functionの読み込み
+      import { sum, multiply } from "/MyModule/utils.js"; // sumモジュールをインポート
+      console.log(sum(1, 2, 3));
+      console.log(multiply(5, 8));
+      document.getElementById("Module_3").innerText = sum(1, 2, 3);
 
+      //例4・全てのクラスをimportする例
 
-//アロー関数
-//ES6では、アロー関数を利用することで関数リテラルをシンプルに記述できる
-//なお、関数リテラルとは、後述のthisの挙動が異なる
-var str = (arg1, arg2) => {
-  console.log('hoge');
-}
-//アロー関数は、引数が1つの場合に限って、下のように引数の()を省略して書くことができる（引数が0個の場合は省略できない）
-//また、下の例のように1行に収まる場合、{}も省略してよい
-var str = arg1 => console.log(arg1);
-//アロー関数がオブジェクトリテラルを返す場合は、下のように、全体を()で囲う必要がある
-var str = func => ({ id: '8' });
+      //require
+      //const helloWorldModule = require('./require_test1.js');
+      //helloWorldModule();
+    </script>
 
+    <script>
+      //オブジェクト思考・クラス・継承・オーバーライド
+      //プログラムで会員や顧客、ユーザーなど人のデータを扱うケース
+      // ↓
+      //1.人は3つのデータを持っている
+      let givenName = "のびた"; //名前
+      let familyName = "のび"; //性
+      let age = 11; //年齢
+      console.log("1." + familyName + " " + givenName); // フルネームを表示
 
-//let const var・変数の定義
-//ES6では、従来のvarに加えて新しくlet・constというシンタックスを使えるようになった
-//varの使い道
-//let・・・変数の再宣言ができない
-//const・・・変数への再宣言と再代入ができない
-//let
-//letを用いた場合、以下のように一度宣言された変数と同名の変数を再度宣言することができない（変数への再代入はできる）
-let x = 10;
-x = 15;//再代入は可能
-console.log(x); // 15
-//let x = 12; //これは再定義なのでエラー// Identifier 'x' has already been declared
-//const
-//constは定数のような役割をしており、一度初期化した変数への再代入が認められない
-const y = 10;
-console.log(y); // 10
-//x = 15; //再代入なのでエラー// TypeError: Assignment to constant variable.
+      // ↓
+      //2.複数人のデータを扱う
+      let givenNames = ["のびた", "スネ夫", "しずか"];
+      let familyNames = ["のび", "骨川", "源"];
+      let ages = ["11", "12", "10"];
+      //全員のフルネームを使う
+      for (let i = 0; i < 3; i++) {
+        console.log("2." + familyNames[i] + " " + givenNames[i]);
+      }
 
-
-
-//配列
-//1つずつ定義する例
-var result = new Array(5);
-result[0] = 85;
-result[1] = 78;
-//まとめて定義する例
-var result = [85, 78, 92, 62, 69];
-
-//連想配列
-
-//多次元配列・2次元配列
-
-
-//正規表現
-
-
-</script>
-
-
-
-<script type="module">
-//モジュール
-//別のファイルを読み込み
-
-
-//import
-//import分はいままでscriptタグを使わないとJs外部ファイルを読み込めなかったものをJsコードないから読み込める
-
-//例1・1つのクラスを読み込む例
-//import { Member } from './MyModule/Util'//エラー
-import { Member } from './MyModule/Util.js'//成功・.jsが必要
-var m = new Member('太郎', '山田')//インスタンス生成
-console.log("例1:"+m.getName()) // 田中太郎
-document.getElementById("Module_1").innerText = m.getName();
-
-//例2・1つのクラスを読み込む例
-import { helloWorld } from './MyModule/HelloWorld.js'
-helloWorld();
-//document.getElementById("Module_2").innerText=helloWorld();
-
-//例3・functionの読み込み
-import { sum, multiply } from '/MyModule/utils.js'; // sumモジュールをインポート
-console.log(sum(1, 2, 3));
-console.log(multiply(5, 8));
-document.getElementById("Module_3").innerText = sum(1, 2, 3);
-
-//例4・全てのクラスをimportする例
-
-//require
-//const helloWorldModule = require('./require_test1.js');
-//helloWorldModule();
-
-</script>
-
-<script>
-//オブジェクト思考・クラス・継承・オーバーライド
-//プログラムで会員や顧客、ユーザーなど人のデータを扱うケース
-// ↓
-//1.人は3つのデータを持っている
-let givenName="のびた";//名前
-let familyName="のび";//性
-let age =11;//年齢
-console.log("1."+familyName + " " + givenName); // フルネームを表示
-
-// ↓
-//2.複数人のデータを扱う
-let givenNames = ["のびた", "スネ夫", "しずか"];
-let familyNames = ["のび", "骨川", "源"];
-let ages = ["11", "12", "10"];
-//全員のフルネームを使う
-for (let i=0;i<3;i++){
-    console.log("2."+ familyNames[i] + " " + givenNames[i]);
-}
-
-// ↓
-//3.オブジェクトにまとめる
-//2のコードは少し読みづらいです。 givenName, familyName, age は人に属しているのに、
-//それらがばらばらの配列に格納されているからです。
-//そこで、三つの値を一つの オブジェクト にまとめたいという気持ちになります。
-/*下でまた定義するので消す
+      // ↓
+      //3.オブジェクトにまとめる
+      //2のコードは少し読みづらいです。 givenName, familyName, age は人に属しているのに、
+      //それらがばらばらの配列に格納されているからです。
+      //そこで、三つの値を一つの オブジェクト にまとめたいという気持ちになります。
+      /*下でまた定義するので消す
 class Person{
     //コンストラクタ
     constructor() {
@@ -270,29 +254,29 @@ class Person{
 }
 */
 
-//Person型(Jsなのでlet)の変数personを宣言し、giveName,familyName,ageの値を設定
-//Person person ={
-let person ={
-    givenName: "のびた",
-    familyName: "のび",
-    age: 26
-};
-//フルネーム表示
-console.log("3."+person.givenName+" " +person.familyName);
-//年齢を1つ増やす
-person.age=person.age+1;
+      //Person型(Jsなのでlet)の変数personを宣言し、giveName,familyName,ageの値を設定
+      //Person person ={
+      let person = {
+        givenName: "のびた",
+        familyName: "のび",
+        age: 26,
+      };
+      //フルネーム表示
+      console.log("3." + person.givenName + " " + person.familyName);
+      //年齢を1つ増やす
+      person.age = person.age + 1;
 
-//このコードでは、 givenName, familyName , age を持った Person （人）という新しい型を宣言し、
-//そのオブジェクトに "Albert", "Einstein", 26 という値を持たせています。
-//Person を宣言するときに class というキーワードを使っていますが、
-//オブジェクト指向では Person のような型を規定するものを クラス と呼びます。
-//また、givenName, familyName, age のことを Person クラスの フィールド と呼びます。
-//フィールドはオブジェクトにひも付いた変数のようなもので、 メンバ変数 と呼ばれることもあります。
+      //このコードでは、 givenName, familyName , age を持った Person （人）という新しい型を宣言し、
+      //そのオブジェクトに "Albert", "Einstein", 26 という値を持たせています。
+      //Person を宣言するときに class というキーワードを使っていますが、
+      //オブジェクト指向では Person のような型を規定するものを クラス と呼びます。
+      //また、givenName, familyName, age のことを Person クラスの フィールド と呼びます。
+      //フィールドはオブジェクトにひも付いた変数のようなもので、 メンバ変数 と呼ばれることもあります。
 
-// ↓
-//4.メソッド
-//先程から何度もフルネームを表示していますが、よく書く処理は関数にすると便利
-/*class Person{
+      // ↓
+      //4.メソッド
+      //先程から何度もフルネームを表示していますが、よく書く処理は関数にすると便利
+      /*class Person{
     constructor(){
         let givenName;
         let familyName;
@@ -311,41 +295,36 @@ const Person_obj = new Person();
 //console.log("4."+Person_obj.getFullName());
 */
 
-// ↓
-//5.コンストラクタ
+      // ↓
+      //5.コンストラクタ
+    </script>
 
+    <script>
+      //Dateコンストラクタは、日付と時刻を操作するためのプロパティやメソッドの集まりです。Dateを引数無しで呼び出した場合、現在時刻の日付を持ったインスタンスを生成します。Dateの引数に特定の時刻を指定すると、その時刻を持ったインスタンスが生成されます。Dateはいろいろな形式で日付を指定できるので、いくつか紹介します。
+      var elem = document.getElementById("NowDateTime");
+      function Date_func() {
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        elem.innerHTML = hours + "時" + minutes + "分" + seconds + "秒";
+      }
+    </script>
+    <style>
+      body {
+        background-color: darkgray;
+      }
+      #Wrapper {
+        width: 50%;
+        margin: 0 auto;
+        padding: 5%;
+        background-color: white;
+      }
 
-
-
-</script>
-
-<script>
-//Dateコンストラクタは、日付と時刻を操作するためのプロパティやメソッドの集まりです。Dateを引数無しで呼び出した場合、現在時刻の日付を持ったインスタンスを生成します。Dateの引数に特定の時刻を指定すると、その時刻を持ったインスタンスが生成されます。Dateはいろいろな形式で日付を指定できるので、いくつか紹介します。
-var elem = document.getElementById("NowDateTime");
-function Date_func(){
-    var date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var seconds = date.getSeconds();
-    elem.innerHTML = hours+"時"+minutes+"分"+seconds+"秒" ;
-}
-
-</script>
-<style>
-body{
-  background-color:darkgray;
-}
-#Wrapper{
-width:50%;
-margin: 0 auto;
-padding: 5%;
-background-color:white;
-}
-
-hr{
-margin-top: 60px;
-margin-bottom: 60px;
-}
-</style>
-</body>
+      hr {
+        margin-top: 60px;
+        margin-bottom: 60px;
+      }
+    </style>
+  </body>
 </html>

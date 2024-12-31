@@ -5,6 +5,6 @@
 
 <script>
 export default {
-  name: 'HelloVue'
-}
+  name: "HelloVue",
+};
 </script>

@@ -1,7 +1,7 @@
 var user = function (name) {
-    return 'こんにちは、' + name + 'さん';
+  return "こんにちは、" + name + "さん";
 };
-console.log(user('太郎'));
+console.log(user("太郎"));
 //コンパイル
 //TypeScript コンパイラを使用して、TypeScript コードを JavaScript にコンパイル
 //tsc app.ts
@@ -35,7 +35,7 @@ console.log(user('太郎'));
 //as const
 //as type
 //let num = 42;
-//let str = num as string; 
+//let str = num as string;
 //any
 //非nullアサーション
 //atisfiesキーワード
@@ -45,7 +45,7 @@ console.log(user('太郎'));
 //stringの値の代入はシングルクオート、ダブルクオート、バッククオートの三つから値の代入ができる。
 var bool = true;
 var num = 1;
-var str1 = 'a';
+var str1 = "a";
 var str2 = "b";
 var str3 = "c";
 /*型注釈、型推論
@@ -55,11 +55,11 @@ var str3 = "c";
 変数の初期値を設定しないで宣言した場合はany型となり、型推論ができないので注意が必要です*/
 var bool_2 = true;
 var num_2 = 1;
-var str1_2 = 'a';
+var str1_2 = "a";
 var str2_2 = "b";
 var str3_2 = "c";
 var h_2; // any型
-h_2 = 'hello';
+h_2 = "hello";
 h_2 = 1;
 /*オブジェクト型
 オブジェクトの型定義の方法は代表的なもので2つあります。
@@ -67,26 +67,26 @@ h_2 = 1;
 それぞれのキーにどんな値が入るかを定義します。*/
 // 型注釈
 var Person = {
-    name: 'Mike',
-    age: 20
+  name: "Mike",
+  age: 20,
 };
 // 型推論
 var Person2 = {
-    name: 'Mike',
-    age2: 20
+  name: "Mike",
+  age2: 20,
 };
 //もう1つは型定義の部分を切り出すinterfaceを使う方法です。
 //こちらのほうが型定義の使い回しができるため、一般的です。
 var author = {
-    name: 'Haruki',
-    age: 99,
-    isFamous: false
+  name: "Haruki",
+  age: 99,
+  isFamous: false,
 };
 //配列
 // 型注釈
-var human1 = ['Mike', 'Anna', "Jason"];
+var human1 = ["Mike", "Anna", "Jason"];
 // 型推論
-var human2 = ['Mike', 'Anna', "Jason"];
+var human2 = ["Mike", "Anna", "Jason"];
 var h1 = human1[0];
 var p1 = { x: 10, y: 20 };
 var p2 = p1;
@@ -99,33 +99,32 @@ console.log(p2.x); // Output: 10
 //演算子typeofは、変数の型をチェックするために使用されます。変数の型を表す文字列値を返します。
 var value = "hello";
 if (typeof value === "string") {
-    console.log("value is a string");
-}
-else {
-    console.log("value is a number");
+  console.log("value is a string");
+} else {
+  console.log("value is a number");
 }
 //＜関数/Functions＞・・・Typing Functions・Function Overloading
 //入力関数/Typing Functions
 //TypeScript では、関数の入力パラメーターと戻り値の型を示すために、いくつかの異なる方法で関数を型指定できます。
 //型を持つ関数宣言
 function add(a, b) {
-    return a + b;
+  return a + b;
 }
 //型を持つアロー関数
 var multiply = function (a, b) {
-    return a * b;
+  return a * b;
 };
 //機能タイプ:
 var divide;
 divide = function (a, b) {
-    return a / b;
+  return a / b;
 };
 //関数のオーバーロード/Function Overloading
 //TypeScript の関数のオーバーロードにより、名前が同じでパラメーターが異なる複数の関数を定義できます。呼び出す正しい関数は、実行時に関数に渡される引数の数、型、および順序に基づいて決定されます。
 //function add1(a: number, b: number): number;
 //function add2(a: string, b: string): string;
 function add3(a, b) {
-    return a + b;
+  return a + b;
 }
 console.log(add3(1, 2)); // 3
 console.log(add3("Hello", " World")); // "Hello World"

@@ -1,4 +1,4 @@
-import consumer from "../channels/consumer"
+import consumer from "../channels/consumer";
 
 const chatChannel = consumer.subscriptions.create("ChatChannel", {
   connected() {
@@ -10,22 +10,22 @@ const chatChannel = consumer.subscriptions.create("ChatChannel", {
   },
 
   received(data) {
-    const messages = document.getElementById('messages')
+    const messages = document.getElementById("messages");
     messages.innerHTML += `
 ${data.message}
 
-`
+`;
   },
 
   speak(message) {
-    this.perform('speak', { message: message })
-  }
-})
+    this.perform("speak", { message: message });
+  },
+});
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('send_message').addEventListener('click', () => {
-    const input = document.getElementById('message_input')
-    chatChannel.speak(input.value)
-    input.value = ''
-  })
-})
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("send_message").addEventListener("click", () => {
+    const input = document.getElementById("message_input");
+    chatChannel.speak(input.value);
+    input.value = "";
+  });
+});
