@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-  post "/graphql", to: "graphql#execute"
+
   get 'my_test/hello'
   root 'application#index'
 
   #API
   resources :api_rest
+
   get '/graphql'  => 'api#graphql'
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
+  post "/graphql", to: "graphql#execute" #これによって、/graphqlのURLにPOSTでアクセスすることでGraphQLのメソッドが実行されます。
+  
   get '/grpc'  => 'api#grpc'
 
   #authentication
