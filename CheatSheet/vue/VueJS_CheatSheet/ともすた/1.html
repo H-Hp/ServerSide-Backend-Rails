@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js HelloWorld</title>
+
+    <!--vue.jsをcdnで読み込み-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!--Lodash.js・アニメーションで使う-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js"></script>
+</head>
+<body>
+<div id="app">
+{{ message }} <!--{{ }}・マスタッシュ記号-->
+</div>
+
+<div id="app_if">
+    <!--v-ifはディレクティブで指令という意味・Vue.jsのif構文のディレクティブ-->
+    <p v-if="if_test">if・条件分岐・trueなら表示・falseなら非表示</p>
+</div>
+
+
+
+<div id="app_Zokusei">
+    <!--v-bindディレクティブでclass属性を書き換える-->
+    <p v-bind:class="Zokusei_class">class属性書き換え</p>
+    <p v-bind:id="Zokusei_id">id属性書き換え</p>
+    <img v-bind:src="Zokusei_src"  alt="" width="100" height="100">
+</div>
+<style>
+.Zokusei_class{color: red;}
+.Henkago_Zokusei_class{color:blue;}
+#Zokusei_id{color: red;}
+#Henkago_Zokusei_id{color:blue;}
+</style>
+
+
+<div id="app_Button">
+    <!--ボタンイベント-->
+    <p>{{ now }}</p>
+    <button v-on:click="time">現在時間を表示</button>
+</div>
+
+
+<div id="app_for">
+    <!--配列・forループ-->    
+    <ul>
+        <li v-for="pref in prefs"><!--pref in prefsは「変数名 in 配列名」 -->
+            {{ pref.name }}
+        </li>
+    </ul>
+</div>
+
+
+<!--アニメーション-->
+<div id="app_anim">
+    <button v-on:click="shuffle">シャッフル</button>
+    <transition-group name="flip-list" tag="ul"><!--アニメーションを使うときに囲うタグ-->
+        
+            <li v-for="pref in prefs" v-bind:key="pref.name"><!--pref in prefsは「変数名 in 配列名」 -->
+                {{ pref.name }}
+            </li>
+       
+    </transition-group>
+</div>
+<style>
+.flip-list-move{
+    transition:transform .5s;
+}    
+</style>
+
+
+
+<!--コンポーネント-->
+<div id="app_comp">
+<alert-box>11</alert-box>
+<alert-box>22</alert-box>
+<alert-box>33</alert-box>
+</div>
+<style>
+    .alert{
+        background-color: #fccc;
+        padding: 10;
+        border :1px solid #f33;
+    }
+</style>
+
+<script>
+
+//文字出力・書き換え    
+var app =new Vue({//new Vueにてappというインスタンスを作った
+//この{}(中かっこ)の中に記述することでいろいろ設定できる(コンストラクター)・インスタンスオブジェクトを作るときにいろいろ設定できる
+    el:"#app",//elはエレメントの略で、HTMLの要素を指定する・セレクタにて
+    data:{//dataはVue.jsが使う様々なデータを定義する場所
+        message:"HelloWorld"//上のHTMLで指定した {{ message }}(マスタッシュ記号)のmessageの中にを入れ替える
+    }
+});
+
+
+//if・条件分岐
+var app_if =new Vue({
+    el:"#app_if",
+    data:{
+        if_test:true//trueなら表示される
+        //error:false//falseは表示されない・コメントアウトされる
+    }
+});
+
+
+//属性の書き換え
+var app_Zokusei =new Vue({
+    el:"#app_Zokusei",
+    data:{
+        Zokusei_class:"Henkago_Zokusei_class",//falseは表示されない・コメントアウトされる
+        Zokusei_id:"Henkago_Zokusei_id",
+        Zokusei_src:"../2.jpg"
+    }
+});
+
+
+//ボタンイベント・現在時間を表示
+var app_Zokusei =new Vue({
+    el:"#app_Button",
+    data:{
+        now:"00:00:00"
+    },
+    methods:{
+        time:function (e){
+            var date =new Date();
+            this.now=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+            //this.now="11:22:33";
+        }
+    }
+});
+
+
+//配列・forループ
+var app_for =new Vue({
+    el:"#app_for",
+    data:{
+        prefs:[
+            {name:"北海道"},
+            {name:"九州"},
+            {name:"本州"},
+            {name:"四国"},
+            {name:"沖縄"}
+        ]
+    }
+});
+
+
+//アニメーション
+var app_anim =new Vue({
+    el:"#app_anim",
+    data:{
+        prefs:[
+            {name:"北海道"},
+            {name:"九州"},
+            {name:"本州"},
+            {name:"四国"},
+            {name:"沖縄"}
+        ]
+    },
+    methods:{
+        shuffle:function(e){
+            this.prefs=_.shuffle(this.prefs);
+        }
+        
+    }
+});
+
+
+//コンポーネント
+Vue.component('alert-box',{
+    template:`
+    <div class="alert" v-on:click="caution">
+    <strong>Error!</strong>
+    <slot></slot>
+    </div>
+    `
+    //コンポーネント内にイベントも定義できる
+    ,methods:{
+    caution:function(){
+        alert("クリックしました。");
+    }
+}
+}
+);
+var app_comp =new Vue({
+    el:"#app_comp"
+});
+
+</script>
+</body>
+</html>

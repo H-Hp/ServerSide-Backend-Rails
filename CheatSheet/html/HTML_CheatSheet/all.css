@@ -1,0 +1,18 @@
+ /*ドキュメントスタイルシート・styleタグを使って、HTMLに直接書き込む方法*/
+ #section_h2{
+    background-color:rgb(252, 233, 62) ;
+    margin-top:300px;
+}
+.TagList{
+    margin-bottom: 150px;
+}
+.space{
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+#tag_title{
+    background-color:orange;
+    width: fit-content;
+    /*width: 15%;*/
+}

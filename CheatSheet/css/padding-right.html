@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="output" class="output large">
+        <section id="default-example">
+            <div class="transition-all" id="example-element">
+                <div class="box">Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.</div>
+            </div>
+        </section>
+    </div>
+<style>
+.small-desktop-and-below .output, .small-desktop-and-below .output.large {
+    position: relative;
+    height: 225px;
+}
+
+.small-desktop-and-below .example-choice-list, .small-desktop-and-below .example-choice-list.large.live, .small-desktop-and-below .example-choice-list.live, .small-desktop-and-below .output {
+    float: none;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+.output {
+    position: relative;
+    float: right;
+    background-color: #fff;
+    width: 40%;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px -2px rgba(0,0,0,.2);
+    padding: 1em;
+}
+.output {
+    height: 300px;
+    overflow: hidden;
+}
+.output section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.output section {
+    height: 100%;
+    text-align: center;
+}
+
+#example-element {
+    padding-right:1em;
+    border: 10px solid #ffc129;
+    overflow: hidden;
+    text-align: left;
+}
+.transition-all {
+    transition: all .3s ease-in;
+}
+.box {
+    border: dashed 1px;
+}
+</style>
+    
+<button id="id-1">padding-right: 1em;</button>
+<button id="id-2">padding-right: 10%;</button>
+<button id="id-3">padding-right: 20px</button>
+<button id="id-4">padding-right: 1ch;</button>
+<button id="id-5">padding-right: 0;</button>
+<script>
+$('#id-1').click(function() {
+    $(".transition-all").css('padding-right','1em');
+});
+$('#id-2').click(function() {
+    $(".transition-all").css('padding-right','10%');
+});
+$('#id-3').click(function() {
+    $(".transition-all").css('padding-right','20px');
+});
+$('#id-4').click(function() {
+    $(".transition-all").css('padding-right','1ch');
+});
+$('#id-5').click(function() {
+    $(".transition-all").css('padding-right','0');
+});
+</script>
+
+
+
+</body>
+</html>

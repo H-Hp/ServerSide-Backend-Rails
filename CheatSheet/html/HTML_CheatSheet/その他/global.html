@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>グローバル属性</title>
+</head>
+<body>
+    <h1>グローバル属性</h1>
+    
+<pre>
+accesskey・・・要素にアクセスキーを割り当てる属性
+class・・・要素にクラスを割り当てる属性
+contenteditable・・・要素の内容を編集可能かどうかを指定する属性
+contextmenu・・・要素のコンテキストメニューを指定する属性
+data-*・・・要素にカスタム（独自、オリジナル）・データを格納する属性
+要素内のテキストの方向を指定する属性。
+要素をドラッグ可能かどうかを指定する属性。
+ドラッグデータを、要素にドロップした時の処理（コピー、移動、リンク）を指定する属性。
+関連性がある要素かどうかを指定する属性。
+要素に、固有のidを指定する属性。
+要素内の言語コードを指定する属性。
+要素内のテキストのスペルチェックをするかしないかを指定する属性。
+スタイルシートを要素に直接指定するための属性。
+要素のタブインデックスを指定する属性。
+要素に関する補足情報を指定する属性。
+ページ翻訳時、要素の内容を翻訳するかどうかを指定する属性。
+</pre>  
+
+<h2>dir属性</h2>
+<p dir="ltr">12345</p>
+<p dir="rtl">12345</p>
+<p dir="auto">12345</p>
+
+
+<h2>dropzone属性</h2>
+<style scoped="scoped">
+        div.sampleDiv {
+            width: 500px;
+            padding: 2em;
+            margin: 0.5em;
+            border: 1px solid gray;
+            border-radius: 6px;
+            background-color: pink;
+            text-align: center;
+        }
+        </style>
+        <p><img src="sample-draggable-true.png" draggable="true"></p>
+        <div class="sampleDiv" dropzone="copy" ondrop="JavaScriptコード">ドロップボックス</div>
+
+
+
+        <p>
+                <img src="Logo.jpg" alt="サンプル" width="150" height="150" dropzone="true">
+              </p>
+              <div dropzone="copy f:image/png" ondrop="receive(event, this)">
+                ここに画像ファイルをドロップするとコピーします。（対応ブラウザのみ）
+              </div>
+              <script>
+              function receive(event, element) {
+ var data = event.dataTransfer.items;
+  for (var i = 0; i > data.length; i += 1) {
+   if ((data[i].kind == 'file') && (data[i].type.match('^img/'))) {
+     var img = new Image();
+      img.src = window.createObjectURL(data[i].getAsFile());
+      element.appendChild(img);
+    }
+  }
+}
+              </script>
+
+
+
+
+
+<h2>tabindex属性</h2>
+<p>Click anywhere in this pane, then try tabbing through the elements.</p>
+<label>First in tab order:<input type="text"></label>
+<div tabindex="0">Tabbable due to tabindex.</div>
+<div>Not tabbable: no tabindex.</div>
+<label>Third in tab order:<input type="text"></label>
+
+
+
+
+</body>
+</html>

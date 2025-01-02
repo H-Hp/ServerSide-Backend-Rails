@@ -90,4 +90,8 @@ Rails.application.routes.draw do
   get '/typescript', to: 'frontend#typescript'
   get '/tailwind', to: 'frontend#tailwind'
   get '/web_component', to: 'frontend#web_component'
+  get '/pwa', to: 'frontend#pwa'
+ 
+
+
 end

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bootstrap実践コードシート</title>
+
+
+    <!--Bootstrap読み込み-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="mt-5 mb-3">Bootstrap実践コードシート</h1>
+    </div>
+    <!--containerここまで-->
+
+    <a href="Table.html">テーブル・Table</a>
+
+
+    <!--スペーシング・margin・padding・余白
+    値:0~5
+    m:margin
+    mt:margin-top
+    mb:margin-bottom
+    mr:margin-right
+    ml:margin-left
+    -->
+    <div class="container1">
+        <h2 class="mt-5 mb-3">スペーシング・margin・padding・余白</h2>
+        <p class="mt-2 ml-5">mt-2 ml-5</p>
+        <p>テスト</p>
+    </div>
+
+
+    <!--グリッドシステム-->
+    <div class="container2">
+        <h1 class="mt-5 mb-3">グリッドシステム</h1>
+        <div class="row mt-5">
+            <div class="box1 col-4"> ボックス1 </div>
+            <div class="box2 col-8"> ボックス2 </div>
+        </div>
+    </div>
+
+    <div class="container3">
+        <div class="row">
+            <div class="col">
+                1 of 3
+            </div>
+            <div class="col-6">
+                2 of 3 (wider)
+            </div>
+            <div class="col">
+                3 of 3
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                1 of 3
+            </div>
+            <div class="col-5">
+                2 of 3 (wider)
+            </div>
+            <div class="col">
+                3 of 3
+            </div>
+        </div>
+    </div>
+
+
+    <!--見出しタグ-->
+    <h1>見出し1</h1>
+    <h2>見出し1</h2>
+    <h3>見出し1</h3>
+
+    <!--リストタグ-->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+
+    </ul>
+
+    
+
+    <style>
+        .container {
+            background: indigo;
+        }
+
+        .container h1 {
+            color: white;
+        }
+
+        .container1 {
+            background: cyan;
+        }
+
+
+        .box1 {
+            background-color: bisque;
+        }
+
+        .box2 {
+            background-color: darkkhaki;
+        }
+    </style>
+
+
+<h2>ボタン</h2>
+<button type="button" class="btn btn-default">Default</button>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-link">Link</button>
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

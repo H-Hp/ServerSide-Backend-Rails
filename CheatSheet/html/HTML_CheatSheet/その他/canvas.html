@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvasのチートシート</title>
+</head>
+<body>
+    <h1>canvasのチートシート</h1>
+    <canvas id="rectangle" width="640" height="480"></canvas>
+
+
+    <canvas id="sample" width="640" height="480"></canvas>
+    <script>
+ /*   onload = function() {
+  draw();
+};
+ 
+function draw() {
+  var canvas = document.getElementById('rectangle');
+  if ( ! canvas || ! canvas.getContext ) {
+    return false;
+  }
+  var cvs = canvas.getContext('2d');
+ 
+  // rectangle
+  cvs.beginPath(); //図形を描き始めることを宣言 
+  cvs.moveTo(50, 50); // 図形の描き始めを移動 
+  cvs.lineTo(150, 50); // 図形の線の終わりを決める 
+  cvs.lineTo(150, 150);
+  cvs.lineTo(50, 150);
+  cvs.closePath(); // 描いた線を閉じる 
+  cvs.stroke(); // 描いた図形を線で表示させる 
+}
+*/
+
+onload = function() {
+  draw();
+};
+ 
+function draw() {
+  var canvas = document.getElementById('rectangle');
+  if ( ! canvas || ! canvas.getContext ) {
+    return false;
+  }
+  var cvs = canvas.getContext('2d');
+ 
+  /* rectangle */
+  cvs.strokeRect(50,50,100,100); // (50,50)の位置に100x100のサイズの四角形を描く
+}
+
+
+
+
+
+function draw(){
+            var canvas = document.getElementById('sample');
+            if (canvas.getContext){
+                var ctx = canvas.getContext('2d');
+                //塗りつぶし
+                ctx.beginPath();
+                ctx.moveTo(50,70);
+                ctx.lineTo(300,200);
+                ctx.lineTo(150,200);
+                ctx.closePath();
+                ctx.fill();
+
+                //輪郭線
+                ctx.beginPath();
+                ctx.moveTo(30,180);
+                ctx.lineTo(160,20);
+                ctx.lineTo(320,90);
+                ctx.closePath();
+                ctx.stroke();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html><!--DOCTYPE宣言・ドキュメントタイプを宣言-->
+<html lang="en"><!--HTML文書であることを示す-->
+<head><!--headタグ・文書のヘッダ情報を表す-->
+    <!--titleタグ・ページのタイトルを付ける-->
+    <title>HTMLチートシート・titleタグ</title>
+    
+    <!--metaタグ・その文書に関する情報（メタデータ）を指定-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+    
+
+
+
+
+
+    <!--baseタグ・相対パスの基準URIを指定する-->
+    <!--<base href="http://localhost">-->
+
+
+    <!--linkタグ・リンクする外部リソースを指定する・関連する文書ファイルを指定する-->
+    <link rel="stylesheet" href="index.css"><!--外部スタイルシート読み込み-->
+
+    <!--styleタグ-->
+    <style>
+    /*ドキュメントスタイルシート・styleタグを使って、HTMLに直接書き込む方法*/
+    #section_h2{
+        background-color:rgb(252, 233, 62) ;
+        margin-top:300px;
+    }
+
+    #tag_title{
+        
+    }
+    </style>
+
+
+
+    
+</head>
+<body><!--bodyタグ・ページの本体を表す-->
+<h1>HTMLチートシート</h1>
+<p>このページでは仕様を確認する</p>
+<hr>
+
+<!--グローバル属性-->
+<h2 id="section_h2" style="margin-top:0;">グローバル属性・すべてのタグで使える属性</h2>
+<pre>
+accesskey・・・要素にアクセスキーを割り当てる属性
+class・・・要素にクラスを割り当てる属性
+contenteditable・・・要素の内容を編集可能かどうかを指定する属性
+contextmenu・・・要素のコンテキストメニューを指定する属性
+data-*・・・要素にカスタム（独自、オリジナル）・データを格納する属性
+要素内のテキストの方向を指定する属性。
+要素をドラッグ可能かどうかを指定する属性。
+ドラッグデータを、要素にドロップした時の処理（コピー、移動、リンク）を指定する属性。
+関連性がある要素かどうかを指定する属性。
+要素に、固有のidを指定する属性。
+要素内の言語コードを指定する属性。
+要素内のテキストのスペルチェックをするかしないかを指定する属性。
+スタイルシートを要素に直接指定するための属性。
+要素のタブインデックスを指定する属性。
+要素に関する補足情報を指定する属性。
+ページ翻訳時、要素の内容を翻訳するかどうかを指定する属性。
+</pre>    
+
+
+
+
+
+<h2 id="section_h2">スクリプト</h2>
+<p>タグ一覧・・・scriptタグ・noscriptタグ</p>
+<h3 id="tag_title">scriptタグ・文書にスクリプトを埋め込む</h3>
+<script>
+//alert('Javascript');
+//a();
+function a(){
+    alert('function_a');
+}
+</script>
+
+<h3 id="tag_title">noscriptタグ・スクリプトが動作しない環境用の表示内容を指定する</h3>
+<p>HTML4.01ではnoscript要素をhead要素内に配置することは仕様として認められていませんでしたが、 HTML5ではhead要素内に配置してもよいことになっています。 また、HTML5ではnoscript要素がhead要素内にある場合には、noscript要素の中に link要素、style要素、meta要素を配置してもよいことになっています</p>
+<noscript>noscriptタグ・スクリプトが動作しない環境用の表示内容を指定する</noscript>
+
+
+
+<h2 id="section_h2">セクション</h2>
+<!--
+<nav> …… ナビゲーションであることを示すHTML5から追加
+<article> …… 記事であることを示すHTML5から追加
+<aside> …… 余談・補足情報のセクションであることを示すHTML5から追加
+<h1>-<h6> …… 見出しを付ける
+<hgroup> …… セクションの見出しを表す、見出しをまとめる【廃止予定】
+<header> ……ヘッダであることを示すHTML5から追加
+<footer> …… フッタであることを示すHTML5から追加
+<address> …… 連絡先・問合せ先を表す
+-->
+
+<h3 id="tag_title">sectionタグ・一つのセクションであることを示すHTML5から追加</h3>
+<section>
+<h1>コンテンツ内容見出し</h1>
+<p>コンテンツ内容1</p>
+</section>
+
+
+<br><br><br><br>
+
+
+<h3 id="tag_title">navタグ</h3>
+<pre>
+<b>ナビゲーションとは</b><br>
+ナビゲーションとは、ウェブサイト内の他のページへのリンクや、ページ内リンクなどのこと
+</pre>
+<nav>
+<h1>メニュー</h1>
+<ul>
+<li><a href="index.html">トップページ</a></li>
+<li><a href="item.html">商品一覧</a></li>
+<li><a href="shop.html">店舗紹介</a></li>
+</ul>
+</nav>     
+
+
+<br><br><br><br>
+
+
+<h3 id="tag_title">articleタグ</h3>
+<article> </article>
+
+
+<br><br><br><br>
+
+
+<h3 id="tag_title">hタグ・見出しタグ・h1・h2・h3・h4・h5・h6</h3>
+<h1>h1タグ</h1>
+<h2>h2タグ</h2>
+<h3>h3タグ</h3>
+<h4>h4タグ</h4>
+<h5>h5タグ</h5>
+<h6>h6タグ</h6>
+
+
+<h3 id="tag_title">headerタグ</h3>
+<header>
+
+</header>
+
+<main>
+
+</main>
+
+<footer>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="section_h2">コンテンツの分類</h2>
+
+
+
+
+
+<p>pタグ</p>
+
+<b>bタグ・テキストを太字にする</b> <br><br><br>
+
+<i>iタグ・テキストを斜体（イタリック）にする</i> <br><br><br>
+
+<u>uタグ・テキストに下線（アンダーライン）を引く</u><br><br><br>
+
+<small>smallタグ・テキストのサイズをひとまわり小さくする</small> <br><br><br>
+
+<s>sタグ・打ち消し線を引く・非推奨</s> <br><br><br>
+
+<sub>subタグ・下付き文字を表示する</sub> <br><br><br>
+<sup>supタグ・上付き文字を表示する</sup> <br><br><br>
+    
+
+
+<pre>
+<h3>ruby・rt・rp</h3>
+rbタグ・ルビをふる文字を指定する（IEが独自に採用
+rpタグ・ルビを囲む記号を指定する（IEが独自に採用
+rtタグ・ルビのテキストを指定する・ルビの内容を指定する（IEが独自に採用
+rubyタグ・ルビの範囲を指定する（IEが独自に採用
+</pre>
+
+<ruby>
+漢<rt>かん</rt>
+字<rt>じ</rt>
+</ruby><br>
+
+<ruby>
+漢<rp>(</rp><rt>かん</rt><rp>)</rp>
+字<rp>(</rp><rt>じ</rt><rp>)</rp>
+</ruby>
+
+<marquee behavior="" direction="">marqueeタグ・文字をスクロールさせる（IE独自の仕様）</marquee>　<br><br><br>
+
+
+<bdo dir="ltl">bdoタグ・文字表記の方向を指定する</bdo>　<br><br><br>
+<p>
+<bdo dir="rtl">bdoタグ・いづれの御時にか、女御、更衣あまたさぶらひたまひけるなかに</bdo>
+</p>
+<p>
+<bdo dir="ltr">bdoタグ・いづれの御時にか、女御、更衣あまたさぶらひたまひけるなかに</bdo>
+</p>
+
+<p>brタグ改行する</p>       
+<br>
+
+　<br><br><br>
+
+改行なしで表示する（NN独自の仕様）
+<nobr></nobr>
+
+
+        <br><br><br>
+
+        <nobr>wbrタグ・nobrタグ内で改行して<wbr>も良い位置を指定する（NN独自の仕様）</nobr>
+   <br><br><br>
+
+         
+
+<em>emタグ・強調する</em> <br><br><br>
+
+<strong>strongタグ・強調する</strong> <br><br><br>
+
+<dfn>dfnタグ・定義する用語を明示する</dfn> <br><br><br>
+
+
+<address>addressタグ・連絡先・問合せ先を表す</address> <br><br><br>
+
+<blockquote>blockquoteタグ・引用・転載であることを表す</blockquote> <br><br><br>
+
+<q>qタグ・引用・抜粋であることを表す</q> <br><br><br>
+
+<cite>citeタグ・出典・参照先を表す</cite> <br><br><br>
+
+<code>codeタグ・プログラムのソースコードであることを示す</code> <br><br><br>
+
+<var>varタグ・変数や引数であることを示す</var> <br><br><br>
+
+<samp>sampタグ・プログラムによる出力結果のサンプルであることを示す</samp> <br><br><br>
+
+<kbd>kbdタグ・キーボード入力される文字であることを示す</kbd> <br><br><br>
+
+<abbr title="aaa">abbrタグ・略語（頭字語以外）であることを表す</abbr> <br><br><br>
+
+
+
+
+
+
+<hr><h2>リンク関係</h2>
+
+<a href="その他/a_Test.html">aタグ・ハイパーリンク・アンカーテキスト・・・リンクをはる、リンクの出発点・到達点を指定する</a> <br><br><br>
+
+<p>mapタグ・ひとつの画像に複数のリンクを設定する（イメージマップ）</p>
+<p>areaタグ・イメージマップの領域を設定する</p>
+
+<img src="その他/e_mapLink.gif" alt="イメージマップ" useMap="#mapA">
+<map name="mapA">
+<area shape="rect" coords="37,10, 96,54" href="e4_map-Link.htm#Link1" alt="リンク１" target="bord">
+<area shape="circle" coords="139,32, 22" href="e4_map-Link.htm#Link2" alt="リンク２" target="bord">
+<area shape="poly" coords="182,32, 204,10, 240,10, 262,32, 240,54, 204,54" href="e4_map-Link.htm#Link3" alt="リンク３" target="bord">
+</map>
+
+
+
+<h2 id="section_h2">テキストの意味</h2>
+
+
+
+    
+<h2 id="section_h2">挿入と削除</h2>
+<del>del・削除された部分であることを示す</del> <br><br><br>
+
+<ins>insタグ・追加された部分であることを示す</ins> <br><br><br>
+
+
+
+
+
+<h2 id="section_h2">コンテンツの埋め込み・画像・動画</h2>
+<p>imgタグ・画像を表示する</p>
+<img src="その他/hannta-.jpeg" alt="代替テキスト">
+
+<p>embedタグ・プラグインデータを埋め込む（NN独自の仕様）</p>
+<embed src="その他/Boku-no-Hero-Academia-OST-22-Sentou-Kunren-戦闘訓練.swf" width="500" height="300"> 
+
+
+<p>objectタグ・・・画像や動画、音声、プラグインデータ、HTML文書などのさまざまな形式を持つデータを文書に埋め込む</p>
+<object data="その他/4次元.gif" type="image/gif" width="300" height="300"></object>
+
+
+
+
+
+<PARAM> …… パラメータを指定する
+<BGSOUND> …… 効果音・BGMを鳴らす（IE独自の仕様）
+    
+
+
+<h2 id="section_h2">テーブル・表・レイアウト</h2>
+<!--
+<CAPTION> …… テーブル（表）にタイトルをつける
+<COL> …… 表の縦列の属性をまとめて指定する
+<COLGROUP> …… 表の縦列をグループ化する
+<MULTICOL> …… 段組する（NN独自の仕様）
+<HR> …… 横罫線を引く
+    
+    
+<table> …… テーブル（表）を作成する
+<caption> …… テーブル（表）にキャプションをつける
+<colgroup> …… 表の縦列をグループ化する
+<col> …… 表の縦列の属性やスタイルを指定する
+<tbody> …… テーブル（表）のボディ部分を定義する
+<thead> …… テーブル（表）のヘッダ部分を定義する
+<tfoot> …… テーブル（表）のフッタ部分を定義する
+<tr> …… テーブル（表）の横一行を定義する
+<td> …… テーブル（表）のデータセルを作成する
+<th> …… テーブル（表）の見出しセルを作成する
+-->
+<pre>
+table・テーブル（表）を作成する
+caption・テーブルのタイトルを指定するタグ
+colgroup・表の縦列をグループ化する
+col・表の縦列の属性やスタイルを指定する
+tbody・テーブル（表）のボディ部分を定義する
+thead・テーブル（表）のヘッダ部分を定義する
+tfoot・テーブル（表）のフッタ部分を定義する
+tr・テーブル（表）の横一行を定義する
+td・テーブル（表）のデータセルを作成する
+th・テーブル（表）の見出しセルを作成する
+</pre>
+
+<a href="その他/table.html">table.html</a>
+
+<table >
+    <tr>
+        <td>セル1</td>
+        <td>セル2</td>
+        <td>セル3</td>
+    </tr>
+    <tr>
+        <th>見出し1</th>
+        <th>見出し2</th>
+        <th>見出し3</th>
+    </tr>
+</table>
+
+<style>
+th,td {
+    border:solid 1px; /* 枠線指定 */
+}
+table {
+    border-collapse:collapse; /* セルの線を重ねる */
+}
+</style>
+
+
+<br><br><br><hr><h2>フレーム</h2>
+<p>iframeタグ・インラインフレームを作る・iframe>(アイフレーム)タグはHTMLの文書の中に、
+    もうひとつ別のHTMLファイルを組み込みます（インラインフレームといいます）。HTML内に別のHTMLを入れ子にするタグと考えるといい</p>
+<p>iframeタグ・htmlファイル読み込み</p>
+<iframe src="その他/iframe.html" frameborder="0"></iframe>
+
+<p>iframeタグ・youtube読み込み</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/94YQSckQGCs" frameborder="0"
+ allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<p>hr・横線を引く</p>
+<hr>
+
+
+
+<h2 id="section_h2">フォーム</h2>
+<!--
+<INPUT> …… フォームの構成部品（入力欄・ボタン等）を作成する
+<INPUT type="submit"> …… フォームの送信ボタン・リセットボタンを作成する
+<INPUT type="image"> …… フォームの画像ボタンを作成する
+<INPUT type="button"> …… フォームの汎用ボタンを作成する
+<BUTTON> …… ボタンを作成する
+<INPUT type="text"> …… 一行テキストボックスを作成する
+<INPUT type="password"> …… パスワード入力欄を作成する
+<INPUT type="radio"> …… ラジオボタンを作成する
+<INPUT type="checkbox"> …… チェックボックスを作成する
+<INPUT type="hidden"> …… 非表示データを送信する
+<INPUT type="file"> …… サーバーにファイルを送信する
+<SELECT> …… セレクトボックスを作成する
+<OPTGROUP> …… セレクトボックスの選択肢をグループ化する
+<OPTION> …… セレクトボックスの選択肢を指定する
+<TEXTAREA> …… 複数行の入力フィールドを作成する
+<LEGEND> …… フォームの入力項目グループにタイトルを付ける
+<FIELDSET> …… フォームの入力項目をグループ化する
+<LABEL> …… フォーム部品と項目名（ラベル）を関連付ける
+
+
+<form> …… 
+<fieldset> …… フォームの入力項目をグループ化する
+<legend> …… フォームの入力項目グループにキャプションを付ける
+<label> …… フォーム部品と項目名（ラベル）を関連付ける
+<input> …… フォームを構成する様々な入力部品を作成する
+<input type="hidden"> …… 画面上は表示されない隠しデータを指定する
+<input type="text"> …… 一行テキストボックスを作成する
+<input type="search"> …… 検索テキストの入力欄を作成するHTML5から追加
+<input type="tel"> …… 電話番号の入力欄を作成するHTML5から追加
+<input type="url"> …… URLの入力欄を作成するHTML5から追加
+<input type="email"> …… メールアドレスの入力欄を作成するHTML5から追加
+<input type="password"> …… パスワード入力欄を作成する
+<input type="datetime"> …… 協定世界時による日時の入力欄を作成するHTML5から追加
+<input type="date"> …… 日付の入力欄を作成するHTML5から追加
+<input type="month"> …… 月の入力欄を作成するHTML5から追加
+<input type="week"> …… 週の入力欄を作成するHTML5から追加
+<input type="time"> …… 時間の入力欄を作成するHTML5から追加
+<input type="datetime-local"> …… ローカル日時の入力欄を作成するHTML5から追加
+<input type="number"> …… 数値の入力欄を作成するHTML5から追加
+<input type="range"> …… レンジ入力欄を作成するHTML5から追加
+<input type="color"> …… 色の入力欄を作成するHTML5から追加
+<input type="checkbox"> …… チェックボックスを作成する
+<input type="radio"> …… ラジオボタンを作成する
+<input type="file"> …… サーバーへファイルを送信する
+<input type="submit"> …… 送信ボタンを作成する
+<input type="image"> …… 画像ボタンを作成する
+<input type="reset"> …… リセットボタンを作成する
+<input type="button"> …… 汎用ボタンを作成する
+<input autofocus> …… 入力欄にカーソルを当てて自動フォーカスするHTML5から追加
+<input placeholder> …… 入力欄に初期表示する内容を指定するHTML5から追加
+<input required> …… 入力必須であることを示すHTML5から追加
+<input pattern> …… 正規表現で入力値のパターンを指定するHTML5から追加
+<input min max> …… 入力できる最小値と最大値を指定するHTML5から追加
+<input step> …… 入力欄で刻むステップ値を指定するHTML5から追加
+<input autocomplete> …… 入力候補を提示して入力内容を自動補完するHTML5から追加
+<input multiple> …… 複数の値を入力・選択できるようにするHTML5から追加
+<button> …… ボタンを作成する
+<select> …… セレクトボックスを作成する
+<datalist> …… 入力候補となるデータリストを定義するHTML5から追加
+<optgroup> …… 選択肢をグループ化する
+<option> …… セレクトボックスや入力候補リストの選択肢を指定する
+<textarea> …… 複数行のテキスト入力欄を作成する
+<keygen> …… フォーム送信時にキーを発行するHTML5から追加
+<output> …… 計算結果を示すHTML5から追加
+<progress> …… タスク完了までの進行状況を示すHTML5から追加
+<meter> …… 規定範囲内の測定値を表すHTML5から追加
+-->    
+<pre>
+formタグ・入力・送信フォームを作る
+input・フォームを構成する様々な入力部品を作成する
+input type="hidden"・画面上は表示されない隠しデータを指定する
+input type="text"・一行テキストボックスを作成する
+input type="search"・検索テキストの入力欄を作成するHTML5から追加
+input type="tel"・電話番号の入力欄を作成するHTML5から追加
+input type="url"・URLの入力欄を作成するHTML5から追加
+input type="email"・メールアドレスの入力欄を作成するHTML5から追加
+input type="password"・パスワード入力欄を作成する
+input type="datetime"・協定世界時による日時の入力欄を作成するHTML5から追加
+input type="date"・日付の入力欄を作成するHTML5から追加
+input type="month"・月の入力欄を作成するHTML5から追加
+input type="week"・週の入力欄を作成するHTML5から追加
+input type="time"・時間の入力欄を作成するHTML5から追加
+input type="datetime-local"・ローカル日時の入力欄を作成するHTML5から追加
+input type="number"・数値の入力欄を作成するHTML5から追加
+input type="range"・レンジ入力欄を作成するHTML5から追加
+input type="color"・色の入力欄を作成するHTML5から追加
+input type="checkbox"・チェックボックスを作成する
+input type="radio"・ラジオボタンを作成する
+input type="file"・サーバーへファイルを送信する
+input type="submit"・送信ボタンを作成する
+input type="image"・画像ボタンを作成する
+input type="reset"・リセットボタンを作成する
+input type="button"・汎用ボタンを作成する
+input autofocus・入力欄にカーソルを当てて自動フォーカスするHTML5から追加
+input placeholder・入力欄に初期表示する内容を指定するHTML5から追加
+input required・入力必須であることを示すHTML5から追加
+input pattern・正規表現で入力値のパターンを指定するHTML5から追加
+input min max・入力できる最小値と最大値を指定するHTML5から追加
+input step・入力欄で刻むステップ値を指定するHTML5から追加
+input autocomplete・入力候補を提示して入力内容を自動補完するHTML5から追加
+input multiple・複数の値を入力・選択できるようにするHTML5から追加
+</pre>
+
+<p>phpへ送るフォーム</p>
+<form action="その他/form.php" method="post">
+    <input type="hidden" placeholder="placeholder_hidden">
+    <input type="text" placeholder="placeholder_text">
+    <input type="search">
+    <input type="tel">
+    <input type="url">
+    <input type="email">
+    <input type="password">
+    <input type="datetime">
+    <input type="date">
+    <input type="month">
+    <input type="week">
+    <input type="time">
+    <input type="datetime-local">
+    <input type="number">
+    <input type="range">
+    <input type="color">
+    <input type="checkbox">
+    <input type="radio">
+    <input type="file">
+    <input type="submit">
+    <input type="image">
+    <input type="reset">
+    <input type="button">
+    <input autofocus>
+    <input placeholder>
+    <input required>
+    <input pattern>
+    <input min max>
+    <input step>
+    <input autocomplete>
+    <input multiple>
+</form>
+
+<p>Javaへ送るフォーム</p>
+<form action="その他/form.java" method="post">
+    
+</form>
+
+<p>node.jsへ送るフォーム</p>
+<form action="その他/form.js" method="post">
+    
+</form>
+
+<br><br><br><hr><h2>リスト</h2>
+
+<MENU> …… メニューリストを表示する
+    <p>ulとolはリストの外側のタグ</p>
+    <p>ulタグ・黒ポチの箇条書き・順序のないリストを表示する</p>
+    <p>olタグ・番号付きの箇条書き・順序のあるリストを表示する</p>
+    <p>liタグ・リストの項目を記述する</p>
+<ul>
+    <li>1つめの項目</li>
+    <li>2つめの項目</li>
+    <li>3つめの項目</li>
+</ul>
+<ol>
+    <li>1つめの項目</li>
+    <li>2つめの項目</li>
+    <li>3つめの項目</li>
+</ol>
+
+
+<p>dlタグ・定義リストであることを表す</p>
+<p>dtタグ・定義する用語を表す</p>
+<p>ddタグ・定義した用語の説明を記述する</p>
+<dl>
+    <dt>りんご</dt>
+    <dd>赤くてまるい果物。味は甘酸っぱい</dd>
+
+    <dt>バナナ</dt>
+    <dd>黄色くてうまい</dd>
+</dl>
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+<br><br><br><hr><h2>範囲指定</h2>
+<div>
+ divタグ・ひとかたまりの範囲として定義する（ブロック要素）・めったくそ重要
+</div>
+
+<span>spanタグ・ひとかたまりの範囲として定義する（インライン要素）</span>
+
+    
+
+
+<br><br><br><hr><h2>コメント</h2>
+<p>コメントタグ・＜!-- --＞・ソース中にコメントを入れる</p>
+<!-- 
+コメント
+--> 
+    
+
+
+<br><br><br><hr><h2>ソースの表示</h2>
+<pre>
+preタグ
+ソースを整形済みテキストとして表示する
+</pre>
+
+
+
+
+
+
+<h2 id="section_h2">ユーザーによる操作</h2>
+<!--
+details・備考や操作手段などの詳細情報を示すHTML5から追加
+summary・detailsの内容の要約を示すHTML5から追加
+menu・操作メニューを作成するHTML5から追加
+-->
+<h3 id="tag_title">detailsタグ・summaryタグ・アコーディオン・折りたたみ</h3>
+<details>
+    <summary>summaryタグ・detailsテスト</summary>
+    <dl>
+    <dt>ファイル名：</dt><dd>sample.mp4</dd>
+    <dt>ファイル形式：</dt><dd>MPEG-4</dd>
+    <dt>ファイル容量：</dt><dd>6.55MB</dd>
+    <dt>画面サイズ：</dt><dd>320×240</dd>
+    <dt>再生時間：</dt><dd>24秒</dd>
+    <dt>転送速度：</dt><dd>452KB/秒</dd>
+    </dl>
+</details>
+
+
+<p>menuタグ</p>
+<button type="menu" menu=" editmenu">操作メニュー</button>
+
+<menu type="toolbar">
+        <li>
+        <menu label="ファイル">
+        <button type="button" onclick="fnew()">新規作成</button>
+        <button type="button" onclick="fopen()">開く</button>
+        <button type="button" onclick="fsave()">上書き保存</button>
+        <button type="button" onclick="fsaveas()">名前を付けて保存</button>
+        </menu>
+        </li>
+        <li>
+        <menu label="編集">
+        <button type="button" onclick="ecopy()">コピー</button>
+        <button type="button" onclick="ecut()">切り取り</button>
+        <button type="button" onclick="epaste()">貼り付け</button>
+        </menu>
+        </li>
+        <li>
+        <menu label="ヘルプ">
+        <li><a href="help.html">ヘルプ</a></li>
+        <li><a href="about.html">このウェブサイトについて</a></li>
+        </menu>
+        </li>
+        </menu>
+        
+
+
+<br><br><br><hr><h2>canvas</h2>
+<a href="その他/canvas.html">canvasのチートシート</a>
+
+<br><br><br><hr><h2 id="section_h2">挿入と削除</h2>
+<pre>
+insタグ・追加された部分であることを示す
+属性
+cite属性・変更について説明するURLを指定
+datetime属性・変更した日時をグローバル日時で指定
+＜ins インサート 属性="属性値"＞〜＜/ins＞
+</pre>
+<ins datetime="2005-03-16T00:00Z">
+    <p>私は果物が好きです。</p>
+</ins>
+
+
+<pre>
+delタグ・削除された部分であることを示す
+del要素は文書から削除されたテキストを表します
+属性
+cite属性・変更について説明するURLを指定
+datetime属性・変更した日時をグローバル日時で指定
+</pre>
+<ul>
+<li>プレゼン資料を作成する</li>
+<li><del datetime="2009-10-11T01:25-07:00">ソフトウェアのマニュアルを読む</del></li>
+<li><del datetime="2009-10-10T23:38-07:00">ソフトウェアをインストールする</del></li>
+<li>プリンタ用紙を買う</li>
+</ul>
+
+
+
+<style>
+
+
+
+</style>
+
+
+
+<h2 id="section_h2">廃止されたタグ</h2>
+
+<font face="ＭＳ Ｐゴシック">fontタグ・ＭＳ Ｐゴシック</font><br>
+<font face="メイリオ">fontタグ・ＭＳ Ｐゴシック</font> <br><br><br>
+
+<basefont>a</basefont>  <br><br><br>
+
+<strike>strikeタグ・打ち消し線を引く</strike>  <br><br><br>
+
+<tt>ttタグ・等幅フォントで表示する</tt> <br><br><br>
+
+<blink>blinkタグ・文字を点滅させる（NN独自の仕様）</blink>　<br><br><br>
+
+<big>bigタグ・テキストのサイズをひとまわり大きくする</big><br><br><br>
+
+<acronym title="bbb">acronymタグ・略語（頭字語）であることを表す</acronym> <br><br><br>
+
+
+noembedタグ・プラグインが利用できない環境用の表示内容を指定する（NN独自の仕様）
+<noembed>フラッシュアニメを見るにはプラグインが必要です。</noembed>
+<noembed>要素<embed>要素はHTML5 で正式に認められましたが、<noembed>要素は認めておりません。
+        代替コンテンツが必要な場合は、<embed>要素を用いずに<object>要素とすれば良いのです。
+
+appletタグ・JAVAアプレットを挿入する
+
+<xmp> とほぼ同等の <plaintext> 要素と <listing> 要素も廃止となっています。
+
+<plaintext>廃止された・plaintextタグ・このタグを使用すると<br> タグや改行、スペースなども含めて、
+    後続する内容が<em>そのまま</em>表示されます。
+                    </plaintext>
+
+<XMP> …… ソースをそのまま表示する
+
+<LISTING> …… ソースをそのまま表示する（タグは解釈される）
+
+
+
+        フレームは、アクセシビリティ上好ましくない事から、廃止されます。        従って、
+        <frame>要素
+        <frameset>要素
+        <noframes>要素
+        は、いずれも廃止されます。
+        フレームに相当する機能は、<iframe>要素で実現出来ます。       
+        或いは CSS で擬似的にフレームを使っているような視覚効果を得る事も出来ます。
+        <FRAMESET> …… ウィンドウをフレームに分割する
+                <FRAME> …… フレームに表示するファイルを指定する
+                <NOFRAMES> …… フレームが表示できない環境用の表示内容を指定する
+
+<DIR> …… リストを表示する
+
+<p>img要素の border="0" 属性</p>
+<p>script要素の language属性</p>
+<p>a要素の name 属性</p>
+
+<CENTER> …… センタリングする
+        <SPACER> …… スペースを挿入する（NN独自の仕様）
+
+<isindex>要素・HTML4 で既に廃止されており、過去のものとなっている感がありますが、<isindex>要素は、本文内にフォームを置けばそれで対応出来ます。
+<ISINDEX> …… 検索キーワードの入力欄を作る
+
+<br><br><br><hr><h2>レイヤー</h2>
+<LAYER> …… 絶対位置にレイヤー表示する（NN独自の仕様）
+<ILAYER> …… 相対位置にレイヤー表示する（NN独自の仕様）
+<NOLAYER> …… レイヤーが利用できない環境用の表示内容を指定する（NN独自の仕様）
+
+
+        <p>comentタグ・HTMLソースをコメントにする（IE独自の仕様）・Internet Explorer独自の仕様で、実際に使用する機会はほとんどありません。 通常コメントには＜!-- --＞を使用します。</p>
+        <comment>comentタグ・HTML5では、<COMMENT>は廃止される予定です。 同様の機能を実現するには、 <!-- --> に置き換えると良いでしょう。</comment>
+        
+
+<p>command・操作メニューの各コマンドを指定するHTML5から追加・この機能は廃止されました。</p>
+
+</body>
+</html>

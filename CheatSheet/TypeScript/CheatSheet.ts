@@ -24,9 +24,10 @@ console.log(user("太郎"));
 //boolean//true か false
 //number//数字
 //string//文字列
-//void//値を
-//undefined
-//null
+//undefined //値が未定義であることを表す型
+//null //値がないことを表す型
+//symbol型(シンボル型): 一意で不変の値。
+//bigint型(長整数型): 9007199254740992nのようなnumber型では扱えない大きな整数型。
 
 //オブジェクト型
 //Interface

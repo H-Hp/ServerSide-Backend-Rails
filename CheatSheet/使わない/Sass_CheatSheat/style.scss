@@ -1,0 +1,81 @@
+//コメントの記述方法は2種類
+//1行コメント・cssに変換時に消される
+/*複数行コメント
+css変換時にも残る
+*/
+
+
+body{
+    margin: 0;
+}
+
+//ネスティング
+.header {
+    width: 100%;
+    background-color: lightblue;
+    margin: 0;
+    padding: 0;
+    ui {
+        padding: 0;
+        margin: 0;
+        li {
+            font-size: 15px;
+            background-color: red;
+        }
+    }
+}
+
+
+.main{
+
+
+    //&記号・本来CSSではli:hover{と書く
+    li{
+        font-size:15px;
+        &:hover{//マウスを乗せた際の処理
+            background-color:red;
+        }
+    }
+    span:active{
+        position: relative;
+        top:7px;
+        box-shadow: none;
+        background-color:red;
+    }
+
+
+    //変数
+    //Cssはプロパティと値(background:yellow;)で作るが、その値を変数として定義して使える
+    $My-Color: orange;
+    h1 {
+    background: $My-Color;
+    }
+    p{
+    color:$My-Color;
+    }
+    a{
+    color: $My-Color;
+    }
+}
+
+//mixin・プロパティをまるごと変数化のイメージ
+//mixinとは、いくつかのコードを1つにまとめて、複数箇所で簡単に呼び出すことができる機能
+@mixin Test_card {
+    background: rgb(174, 192, 12);
+    border-radius: 2px;
+    box-shadow: 0 2px 5px #ccc;
+}
+.main-card {
+    @include Test_card;
+    width: 50%;
+}
+.sub-card {
+    @include Test_card;
+    width: 25%;
+}
+
+
+
+//関数
+
+

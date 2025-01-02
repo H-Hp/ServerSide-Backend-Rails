@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="editor-wrapper small-desktop-and-below">
+    <section id="default-example" class="default-example">
+        <div class="transition-all" id="example-element" style="overflow-x: auto;">The value of Pi is
+          3.1415926535897932384626433832795029. The value of e is
+          2.7182818284590452353602874713526625.</div>
+    </section> 
+</div>
+
+<style>
+.editor-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.small-desktop-and-below .output, .small-desktop-and-below .output.large {
+    position: relative;
+    height: 225px;
+}
+.small-desktop-and-below .example-choice-list, .small-desktop-and-below .example-choice-list.large.live, .small-desktop-and-below .example-choice-list.live, .small-desktop-and-below .output {
+    float: none;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+.output {
+    position: relative;
+    float: right;
+    background-color: #fff;
+    width: 40%;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px -2px rgba(0,0,0,.2);
+    padding: 1em;
+}
+.output {
+    height: 300px;
+    overflow: hidden;
+}
+
+.output section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.output section {
+    height: 100%;
+    text-align: center;
+}
+
+#example-element {
+    width: 15em;
+    height: 9em;
+    border: medium dotted;
+    padding: .75em;
+    text-align: left;
+}
+
+
+</style>
+    
+<button id="id-1">overflow-x: visible;</button>
+<button id="id-2">overflow-x: hidden;</button>
+<button id="id-3">overflow-x: scroll;</button>
+<button id="id-4">overflow-x: auto;</button>
+<button id="id-5">overflow-x: clip;</button>
+<script>
+$('#id-1').click(function() {
+    $(".transition-all").css('overflow-x','visible');
+});
+$('#id-2').click(function() {
+    $(".transition-all").css('overflow-x','hidden');
+});
+$('#id-3').click(function() {
+    $(".transition-all").css('overflow-x','scroll');
+});
+$('#id-4').click(function() {
+    $(".transition-all").css('overflow-x','auto');
+});
+$('#id-5').click(function() {
+    $(".transition-all").css('overflow-x','clip');
+});
+</script>
+
+
+
+</body>
+</html>

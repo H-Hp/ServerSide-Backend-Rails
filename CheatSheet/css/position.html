@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="editor-wrapper small-desktop-and-below">
+  <div id="output" class="output large">
+      <section id="default-example" class="default-example">
+          <div id="example-element-container">
+              <p>In this demo you can control the <code>position</code> property for the yellow box.</p>
+              <div class="box"></div>
+              <div class="box transition-all" id="example-element" style="position: sticky; top: 20px;"></div>
+              <div class="box"></div>
+              <p class="clear">To see the effect of <code>sticky</code> positioning, select the <code>position: sticky</code> option and scroll this container.</p>
+              <p>The element will scroll along with its container, until it is at the top of the container (or reaches the offset specified in <code>top</code>), and will then stop scrolling, so it stays visible.</p>
+              <p>The rest of this text is only supplied to make sure the container overflows, so as to enable you to scroll it and see the effect.</p>
+              <hr>
+              <p>Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun. Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.</p> 
+          </div>
+      </section>
+  </div>
+  
+      </div>
+
+<br>
+<div id="example-element-container">
+    <p>In this demo you can control the <code>position</code> property for the yellow box.</p>
+    <div class="box"></div>
+    <div class="box transition-all" id="example-element" style="position: sticky; top: 20px;"></div>
+    <div class="box"></div>
+    <p class="clear">To see the effect of <code>sticky</code> positioning, select the <code>position: sticky</code> option and scroll this container.</p>
+    <p>The element will scroll along with its container, until it is at the top of the container (or reaches the offset specified in <code>top</code>), and will then stop scrolling, so it stays visible.</p>
+    <p>The rest of this text is only supplied to make sure the container overflows, so as to enable you to scroll it and see the effect.</p>
+    <hr>
+    <p>Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun. Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.</p> 
+</div>
+<br>
+
+<style>
+body{
+height:2000px;
+}
+.editor-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+.output section {
+    align-items: flex-start;
+    overflow: auto;
+}
+
+.output section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.output section {
+    height: 100%;
+    text-align: center;
+}
+
+#example-element-container {
+    position: relative;
+    text-align: left;
+}
+
+.box {
+    background-color: rgba(0,0,255,.2);
+    border: 3px solid #00f;
+    float: left;
+    width: 65px;
+    height: 65px;
+}
+
+#example-element {
+    background-color: #ff0;
+    border: 3px solid red;
+    z-index: 1;
+}
+
+.box+.box {
+    margin-left: 10px;
+}
+
+.clear {
+    clear: both;
+    padding-top: 1em;
+}
+
+
+
+
+</style>
+
+<button id="id-1">position: static;</button>
+<button id="id-2">position: relative;    top: 40px; left: 40px;</button>
+<button id="id-3">position: absolute;    top: 40px; left: 40px;</button>
+<button id="id-4">position: -webkit-sticky;    position: sticky;    top: 20px;</button>
+<button id="id-5">position: fixed;</button>
+<script>
+$('#id-1').click(function() {
+    $(".transition-all").css('position','static');
+    $(".transition-all").css('top','60px');//staticだから効かない
+});
+$('#id-2').click(function() {
+    $(".transition-all").css('position','relative');
+    $(".transition-all").css('top','40px');
+    $(".transition-all").css('left','40px');
+});
+$('#id-3').click(function() {
+    $(".transition-all").css('position','absolute');
+    $(".transition-all").css('top','40px');
+    $(".transition-all").css('left','40px');
+});
+$('#id-4').click(function() {
+    $(".transition-all").css('position','-webkit-sticky');
+    $(".transition-all").css('position','sticky');
+    $(".transition-all").css('top','20px');
+});
+$('#id-5').click(function() {
+    $(".transition-all").css('position','fixed');
+});
+</script>
+    
+
+
+
+
+</body>
+</html>

@@ -12,5 +12,7 @@ class FrontendController < ApplicationController
   end
   def web_component
   end
+  def pwa
+  end
 
 end

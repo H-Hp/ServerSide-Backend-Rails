@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tableチートシート</title>
+</head>
+
+<body>
+    <h1>tableチートシート</h1>
+
+<!--
+<CAPTION> …… テーブル（表）にタイトルをつける
+<COL> …… 表の縦列の属性をまとめて指定する
+<COLGROUP> …… 表の縦列をグループ化する
+<MULTICOL> …… 段組する（NN独自の仕様）
+<HR> …… 横罫線を引く
+    
+    
+<table> …… テーブル（表）を作成する
+<caption> …… テーブル（表）にキャプションをつける
+<colgroup> …… 表の縦列をグループ化する
+<col> …… 表の縦列の属性やスタイルを指定する
+<tbody> …… テーブル（表）のボディ部分を定義する
+<thead> …… テーブル（表）のヘッダ部分を定義する
+<tfoot> …… テーブル（表）のフッタ部分を定義する
+<tr> …… テーブル（表）の横一行を定義する
+<td> …… テーブル（表）のデータセルを作成する
+<th> …… テーブル（表）の見出しセルを作成する
+-->
+<pre>
+        table・テーブル（表）を作成する
+        caption・テーブルのタイトルを指定するタグ
+        colgroup・表の縦列をグループ化する
+        col・表の縦列の属性やスタイルを指定する
+        tbody・テーブル（表）のボディ部分を定義する
+        thead・テーブル（表）のヘッダ部分を定義する
+        tfoot・テーブル（表）のフッタ部分を定義する
+        tr・テーブル（表）の横一行を定義する
+        td・テーブル（表）のデータセルを作成する
+        th・テーブル（表）の見出しセルを作成する
+        </pre>
+        
+        
+        
+        <table >
+            <tr>
+                <td>セル1</td>
+                <td>セル2</td>
+                <td>セル3</td>
+            </tr>
+            <tr>
+                <th>見出し1</th>
+                <th>見出し2</th>
+                <th>見出し3</th>
+            </tr>
+        </table>
+        
+        <style>
+        th,td {
+            border:solid 1px; /* 枠線指定 */
+        }
+        table {
+            border-collapse:collapse; /* セルの線を重ねる */
+        }
+        </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table>
+        <tr>
+            <th>部署名</th>
+            <th>計画</th>
+            <th>売上</th>
+        </tr>
+        <tr>
+            <td>本社</td>
+            <td>1,400</td>
+            <td>1,300</td>
+        </tr>
+        <tr>
+            <td>大阪支社</td>
+            <td>750</td>
+            <td>920</td>
+        </tr>
+        <tr>
+            <th>合計</th>
+            <td>2,150</td>
+            <td>2,220</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>～表題～</caption>
+        ～
+        <thead>
+            <tr>
+                <th>～見出し～</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>～内容～</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>～フッタ内容～</td>
+            </tr>
+        </tfoot>
+        ～
+    </table>
+
+    <table border="1">
+        <caption>表の題名</caption>
+        <thead>
+            <tr>
+                <th>見出し1</th>
+                <th>見出し2</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td>フッタセル1</td>
+                <td>フッタセル2</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>内容1</td>
+                <td>内容2</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <br><br><br>
+    <h2>colgroupテスト</h2>
+    <table>
+        <caption>寿司ネタ人気ランキング</caption>
+        <colgroup span="1" style="width:30px; background-color:#FF9900;">
+        <colgroup span="2" style="width:150px; background-color:#FF3300;">
+        <thead>
+        <tr>
+            <th>順位</th>
+            <th>名前</th>
+            <th>人気度</th>
+            <th>備考</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>１位</th>
+                <td>トロ</td>
+                <td>☆☆☆☆☆</td>
+                <td>やはり何といってもトロ！</td>
+            </tr>
+            <tr>
+                <th>２位</th>
+                <td>サーモン</td>
+                <td>☆☆☆☆</td>
+                <td>ほど良い脂の乗りで女性に人気。</td>
+            </tr>
+            <tr>
+                <th>３位</th>
+                <td>うに</td>
+                <td>☆☆☆</td>
+                <td>軍艦もので唯一ランクイン。</td>
+            </tr>
+            <tr>
+                <th>４位</th>
+                <td>えび</td>
+                <td>☆☆☆</td>
+                <td>プリプリした歯ごたえが魅力。</td>
+            </tr>
+            <tr>
+                <th>５位</th>
+                <td>イカ</td>
+                <td>☆☆</td>
+                <td>やはり外せない甘みのあるイカ。</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br><br>
+    <h2>colgroupテスト2</h2>
+    <table>
+        <caption>Superheros and sidekicks</caption>
+        <colgroup>
+            <col>
+            <col span="2" class="batman">
+            <col span="2" class="flash">
+        </colgroup>
+        <tr>
+            <td> </td>
+            <th scope="col">Batman</th>
+            <th scope="col">Robin</th>
+            <th scope="col">The Flash</th>
+            <th scope="col">Kid Flash</th>
+        </tr>
+        <tr>
+            <th scope="row">Skill</th>
+            <td>Smarts</td>
+            <td>Dex, acrobat</td>
+            <td>Super speed</td>
+            <td>Super speed</td>
+        </tr>
+    </table>
+    <style>
+    .batman {
+    background-color: #d7d9f2;
+}
+
+.flash {
+    background-color: #ffe8d4;
+}
+    </style>
+
+
+    <style>
+        th,
+        td {
+            border: solid 1px;
+            /* 枠線指定 */
+        }
+
+        table {
+            border-collapse: collapse;
+            /* セルの線を重ねる */
+        }
+
+        h2 {
+            margin: 0;
+        }
+    </style>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/*複数行コメント
+css変換時にも残る
+*/
+body {
+  margin: 0; }
+
+.header {
+  width: 100%;
+  background-color: lightblue;
+  margin: 0;
+  padding: 0; }
+  .header ui {
+    padding: 0;
+    margin: 0; }
+    .header ui li {
+      font-size: 15px;
+      background-color: red; }
+
+.main li {
+  font-size: 15px; }
+  .main li:hover {
+    background-color: red; }
+.main span:active {
+  position: relative;
+  top: 7px;
+  box-shadow: none;
+  background-color: red; }
+.main h1 {
+  background: orange; }
+.main p {
+  color: orange; }
+.main a {
+  color: orange; }
+
+.main-card {
+  background: #aec00c;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px #ccc;
+  width: 50%; }
+
+.sub-card {
+  background: #aec00c;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px #ccc;
+  width: 25%; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js HelloWorld</title>
+
+    <!--vue.jsをcdnで読み込み-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+{{ message }} <!--{{ }}・マスタッシュ記号-->
+</div>
+
+<script>
+var app =new Vue({//new Vueにてappというインスタンスを作った
+//この{}(中かっこ)の中に記述することでいろいろ設定できる(コンストラクター)・インスタンスオブジェクトを作るときにいろいろ設定できる
+    el:"#app",//elはエレメントの略で、HTMLの要素を指定する・セレクタにて
+    data:{//dataはVue.jsが使う様々なデータを定義する場所
+        message:"HelloWorld"//上のHTMLで指定した {{ message }}(マスタッシュ記号)のmessageの中にを入れ替える
+    }
+})
+</script>
+</body>
+</html>

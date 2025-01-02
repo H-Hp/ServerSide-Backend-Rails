@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--vue.jsをcdnで読み込み-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    {{ num + 2  }}<!--マスタッシュの中にJsも記述できる-->
+    {{ ok ? "Yes":"No"   }}<!--三項演算子も記述できる-->
+    {{ sayHi() }}<!--メソッドも呼び出せる-->
+    <!--{{ var a=1 }} ・これは表示されない・あくまで単一の式のみ-->
+
+    <p v-text="message"></p><!--上の{{ message }}と全く同じ-->
+</div>
+
+
+<br><br><br>
+
+
+<div id="app_v-once">
+    <h3>v-onceディレクティブ</h3>
+    {{ message }}
+    {{ Change() }}
+</div>
+
+
+<br><br><br>
+
+
+<div id="app_v-html">
+    <h3>v-htmlディレクティブ</h3>
+    <p>{{ MyHTML }}</p><!--v-htmlがないとテキストとして処理される-->
+    <p v-html="MyHTML"></p><!--v-htmlをつけると文字列にhtmlタグが入っていたらhtmlとして認識してくれる-->
+</div>
+
+
+<br><br><br>
+
+
+<div id="app_v-bind">
+    <h3>v-bindディレクティブ</h3>
+    <a v-bind:href="URL">Googleへ</a>
+    <a :href="URL">Googleへ</a><!--v--bindを省略できる-->
+
+    <a v-bind:[atribute]="URL">Googleへ</a><!--hrefなどを引数に-->
+</div>
+
+
+<script>
+//文字出力・書き換え    
+var app =new Vue({//new Vueにてappというインスタンスを作った
+//この{}(中かっこ)の中に記述することでいろいろ設定できる(コンストラクター)・インスタンスオブジェクトを作るときにいろいろ設定できる
+    el:"#app",//elはエレメントの略で、HTMLの要素を指定する・セレクタにて
+    data:{//dataはVue.jsが使う様々なデータを定義する場所
+        message:"HelloWorld",//上のHTMLで指定した {{ message }}(マスタッシュ記号)のmessageの中にを入れ替える
+        num:6,
+        ok:true
+    },
+    methods:{
+        sayHi:function (){
+            
+            //return 'やっほー'
+
+            this.message="テキスト変更";//htmlにて{{message}}で最初はHelloWorldが表示され、このsayHimメソッドを呼ぶとテキスト変更に文字が変更される
+
+            //data内のmessageにアクセスするには
+            //return message;//ただmessageと書くだけではアクセスできない
+            return this.message;//thisをつけることでアクセスできるようになる 
+        }
+    }
+});
+
+//v-onceディレクティブ
+var app_v_once =new Vue({
+    el:"#app_v-once",
+    data:{
+        message:"最初のテキスト"
+    },
+    methods:{
+        Change:function (){
+            //htmlタグにv-onceが指定されてるので変更できない
+            this.message="テキスト変更";//htmlにて{{message}}で最初はHelloWorldが表示され、このsayHimメソッドを呼ぶとテキスト変更に文字が変更される
+            //return "return"
+            return this.message;//thisをつけることでアクセスできるようになる 
+        }
+    }
+});
+
+
+//v-htmlディレクティブ
+var app_v_html =new Vue({
+    el:"#app_v-html",
+    data:{
+        MyHTML:"<b>v-htmlテスト</b>"
+    }
+});
+
+//v-bindディレクティブ
+var app_v_bind =new Vue({
+    el:"#app_v-bind",
+    data:{
+       URL:"https://ww.google.com",
+       atribute:"href"
+    }
+});
+
+</script>
+</body>
+</html>

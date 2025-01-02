@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="output" class="output large">
+        <section id="default-example" class="default-example">
+          <div id="example-element" class="transition-all" style="width: 150px;">This is a box where you can change the width.</div>
+        </section>
+    </div>
+
+    <br>
+    <div id="example-element" class="transition-all" style="width: 150px;">This is a box where you can change the width.</div>
+    <br>
+<style>
+.output {
+position: relative;
+background-color: yellow;
+width: 40%;
+height: 300px;
+overflow: hidden;
+box-shadow: 2px 2px 5px -2px rgba(0,0,0,.2);
+padding: 1em;
+}
+.output section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.output section {
+    height: 100%;
+    text-align: center;
+}
+#example-element {
+    display: flex;
+    flex-direction: column;
+    background-color: #5b6dcd;
+    height: 80%;
+    justify-content: center;
+    color: #fff;
+}
+</style>
+    
+<button id="h0px">height: 0px;</button>
+<button id="h150px">height: 150px;</button>
+<button id="h20em">height: 7em;</button>
+<button id="h70p">height: 70%;</button>
+<button id="hAuto">height: auto;</button>
+<br>
+<button id="max-h150px">max-height: 150px;</button>
+<button id="max-h20em">max-height: 7em;</button>
+<button id="max-h70p">max-height: 70%;</button>
+<button id="max-h20ch">max-height: 10px;</button>
+<button id="max-hNone">max-height: none;</button>
+<script>
+    $('#h0px').click(function() {
+        $(".transition-all").css('height','0px');
+    });
+    $('#h150px').click(function() {
+        $(".transition-all").css('height','150px');
+    });
+    $('#h20em').click(function() {
+        $(".transition-all").css('height','7em');
+    });
+    $('#h70p').click(function() {
+        $(".transition-all").css('height','75%');
+    });
+    $('#hAuto').click(function() {
+        $(".transition-all").css('height','auto');
+    });
+    
+    
+    $('#max-h150px').click(function() {
+        $(".transition-all").css('max-height','150px');
+    });
+    $('#max-h20em').click(function() {
+        $(".transition-all").css('max-height','7em');
+    });
+    $('#max-h70p').click(function() {
+        $(".transition-all").css('max-height','75%');
+    });
+    $('#max-h20ch').click(function() {
+        $(".transition-all").css('max-height','10px');
+    });
+    $('#max-hNone').click(function() {
+        $(".transition-all").css('max-height','none');
+    });
+    </script>
+
+
+
+</body>
+</html>

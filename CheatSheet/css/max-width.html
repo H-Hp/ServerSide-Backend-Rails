@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="output" class="output large">
+        <section id="default-example" class="default-example">
+          <div id="example-element" class="transition-all" style="width: 150px;">This is a box where you can change the width.</div>
+        </section>
+    </div>
+    <br>
+    <div id="example-element" class="transition-all" style="width: 150px;">This is a box where you can change the width.</div>
+    <br>
+<style>
+.output {
+position: relative;
+background-color: yellow;
+width: 40%;
+height: 300px;
+overflow: hidden;
+box-shadow: 2px 2px 5px -2px rgba(0,0,0,.2);
+padding: 1em;
+}
+.output section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.output section {
+    height: 100%;
+    text-align: center;
+}
+#example-element {
+    display: flex;
+    flex-direction: column;
+    background-color: #5b6dcd;
+    height: 80%;
+    justify-content: center;
+    color: #fff;
+}
+</style>
+<button id="w0px">width: 0px;</button>
+<button id="w150px">width: 150px;</button>
+<button id="w20em">width: 20em;</button>
+<button id="w70p">width: 70%;</button>
+<button id="wAuto">width: auto;</button>
+<br>
+<button id="max-w150px">max-width: 150px;</button>
+<button id="max-w20em">max-width: 20em;</button>
+<button id="max-w70p">max-width: 70%;</button>
+<button id="max-w20ch">max-width: 20ch;</button>
+<button id="max-wNone">max-width: none;</button>
+<script>
+$('#w0px').click(function() {
+    $(".transition-all").css('width','0px');
+});
+$('#w150px').click(function() {
+    $(".transition-all").css('width','150px');
+});
+$('#w20em').click(function() {
+    $(".transition-all").css('width','20em');
+});
+$('#w70p').click(function() {
+    $(".transition-all").css('width','70%');
+});
+$('#wAuto').click(function() {
+    $(".transition-all").css('width','auto');
+});
+
+
+$('#max-w150px').click(function() {
+    $(".transition-all").css('max-width','150px');
+});
+$('#max-w20em').click(function() {
+    $(".transition-all").css('max-width','20em');
+});
+$('#max-w70p').click(function() {
+    $(".transition-all").css('max-width','70%');
+});
+$('#max-w20ch').click(function() {
+    $(".transition-all").css('max-width','20ch');
+});
+$('#max-wNone').click(function() {
+    $(".transition-all").css('max-width','none');
+});
+</script>
+
+
+
+</body>
+</html>

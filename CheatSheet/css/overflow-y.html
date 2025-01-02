@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="editor-wrapper small-desktop-and-below">
+    <div id="output" class="output large">
+        <section id="default-example" class="default-example">
+            <p class="transition-all" id="example-element" style="overflow-y: visible;">Michaelmas term lately over, and the Lord Chancellor sitting in Lincoln's Inn Hall. Implacable November weather. As much mud in the streets as if the waters had but newly retired from the face of the earth.</p>
+        </section>
+    </div>
+</div>
+
+<style>
+.editor-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.output {
+    position: relative;
+    float: right;
+    background-color: #fff;
+    width: 40%;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px -2px rgba(0,0,0,.2);
+    padding: 1em;
+}
+.output {
+    height: 300px;
+    overflow: hidden;
+}
+.output section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.output section {
+    height: 100%;
+    text-align: center;
+}
+#example-element {
+    width: 15em;
+    height: 9em;
+    border: medium dotted;
+    padding: .75em;
+    text-align: left;
+}
+
+
+
+</style>
+    
+<button id="id-1">overflow-y: visible;</button>
+<button id="id-2">overflow-y: hidden;</button>
+<button id="id-3">overflow-y: scroll;</button>
+<button id="id-4">overflow-y: auto;</button>
+<button id="id-5">overflow-y: clip;</button>
+<script>
+$('#id-1').click(function() {
+    $(".transition-all").css('overflow-y','visible');
+});
+$('#id-2').click(function() {
+    $(".transition-all").css('overflow-y','hidden');
+});
+$('#id-3').click(function() {
+    $(".transition-all").css('overflow-y','scroll');
+});
+$('#id-4').click(function() {
+    $(".transition-all").css('overflow-y','auto');
+});
+$('#id-5').click(function() {
+    $(".transition-all").css('overflow-y','clip');
+});
+</script>
+
+
+
+</body>
+</html>
