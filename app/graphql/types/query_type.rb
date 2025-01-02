@@ -2,6 +2,21 @@
 
 module Types
   class QueryType < Types::BaseObject
+
+    # フィールド(:user)の説明と引数を記載します。
+    field :post, Types::PostType, null: true do
+      description "Find post by ID" #省略可
+      argument :id, ID, required: true
+    end
+
+    # 実行のコマンド(リゾルバ)を書きます
+    def post(id:)
+      Post.find(id)
+    end
+    def posts(page: nil, items: nil)
+      Post.all
+    end
+
     field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
       argument :id, ID, required: true, description: "ID of the object."
     end

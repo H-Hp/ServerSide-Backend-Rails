@@ -8,7 +8,8 @@ Bundler.require(*Rails.groups)
 
 module ServerSideBackendRails
   class Application < Rails::Application
-    config.active_record.query_log_tags_enabled = true
+=begin
+    #config.active_record.query_log_tags_enabled = true
     config.active_record.query_log_tags = [
       # Rails query log tags:
       :application, :controller, :action, :job,
@@ -17,6 +18,7 @@ module ServerSideBackendRails
       current_graphql_field: -> { GraphQL::Current.field&.path },
       current_dataloader_source: -> { GraphQL::Current.dataloader_source_class },
     ]
+=end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
