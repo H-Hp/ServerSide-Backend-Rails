@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
   post "/graphql", to: "graphql#execute" #これによって、/graphqlのURLにPOSTでアクセスすることでGraphQLのメソッドが実行されます。
-  
+
   get '/grpc'  => 'api#grpc'
 
   #authentication
@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   get '/aws_lambda'  => 'serverless#aws_lambda'
 
   #searchengines
-  get '/elasticsearch'  => 'searchengines_elasticsearch#elasticsearch'
+  get '/elasticsearch'  => 'searchengines_elasticsearch#index'
 
   #mq_rabbitmq
   get '/mq_rabbitmq_view'  => 'mq_rabbitmq#index'
