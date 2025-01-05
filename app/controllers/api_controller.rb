@@ -1,3 +1,6 @@
+require 'grpc_services/grpc_client'
+#require 'grpc_services/greeter_service'
+
 class ApiController < ApplicationController
   def graphql
     query_string = "
@@ -20,6 +23,8 @@ class ApiController < ApplicationController
   end
 
   def grpc
+    @message = GrpcClient.say_hello('Rails User')
+    #@message = GreeterService.say_hello("name")
   end
 
 end

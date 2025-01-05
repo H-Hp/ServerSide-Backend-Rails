@@ -2,7 +2,7 @@
   "editor.fontSize": 14,
   "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
   "editor.tabSize": 4,
-  "editor.wordWrap": "on",
+  "editor.wordWrap": "off",
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
   "terminal.integrated.shell.osx": "/bin/zsh",

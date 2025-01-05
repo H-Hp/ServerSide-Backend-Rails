@@ -120,11 +120,19 @@ GEM
     fiber-storage (1.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (4.26.1-x86_64-darwin)
+      rake (>= 13)
+    googleapis-common-protos-types (1.16.0)
+      google-protobuf (>= 3.18, < 5.a)
     graphiql-rails (1.10.1)
       railties
     graphql (2.4.8)
       base64
       fiber-storage
+    grpc (1.65.2-x86_64-darwin)
+      google-protobuf (>= 3.25, < 5.0)
+      googleapis-common-protos-types (~> 1.0)
+    grpc-tools (1.68.1)
     hashie (5.0.0)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
@@ -316,8 +324,11 @@ DEPENDENCIES
   dotenv-rails
   elasticsearch-model (~> 7.1)
   elasticsearch-rails (~> 7.1)
+  google-protobuf
   graphiql-rails
   graphql
+  grpc
+  grpc-tools
   jbuilder (~> 2.7)
   jwt
   listen (~> 3.3)
