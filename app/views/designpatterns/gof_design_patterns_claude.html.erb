@@ -1,0 +1,414 @@
+<%=
+# 生成パターン (Creational Patterns)
+
+# Singleton パターン
+# インスタンスが1つしか存在しないことを保証
+class Singleton
+  @instance = nil
+  
+  private_class_method :new
+  
+  def self.instance
+    @instance ||= new
+  end
+end
+
+# Factory Method パターン
+# オブジェクト生成をサブクラスに委ねる
+class Creator
+  def factory_method
+    raise NotImplementedError
+  end
+  
+  def operation
+    product = factory_method
+    product.operation
+  end
+end
+
+class ConcreteCreator < Creator
+  def factory_method
+    ConcreteProduct.new
+  end
+end
+
+# Abstract Factory パターン
+# 関連するオブジェクトファミリーを生成
+class AbstractFactory
+  def create_product_a
+    raise NotImplementedError
+  end
+  
+  def create_product_b
+    raise NotImplementedError
+  end
+end
+
+class ConcreteFactory < AbstractFactory
+  def create_product_a
+    ConcreteProductA.new
+  end
+  
+  def create_product_b
+    ConcreteProductB.new
+  end
+end
+
+# Builder パターン
+# 複雑なオブジェクトを段階的に構築
+class Builder
+  def build_part_a
+    raise NotImplementedError
+  end
+  
+  def build_part_b
+    raise NotImplementedError
+  end
+  
+  def result
+    raise NotImplementedError
+  end
+end
+
+class Director
+  def initialize(builder)
+    @builder = builder
+  end
+  
+  def construct
+    @builder.build_part_a
+    @builder.build_part_b
+    @builder.result
+  end
+end
+
+# Prototype パターン
+# 既存のオブジェクトをクローンして新しいオブジェクトを生成
+class Prototype
+  def clone
+    deep_copy = Marshal.load(Marshal.dump(self))
+    deep_copy
+  end
+end
+
+# 構造パターン (Structural Patterns)
+
+# Adapter パターン
+# 互換性のないインターフェースを適合させる
+class Target
+  def request
+    raise NotImplementedError
+  end
+end
+
+class Adapter < Target
+  def initialize(adaptee)
+    @adaptee = adaptee
+  end
+  
+  def request
+    @adaptee.specific_request
+  end
+end
+
+# Bridge パターン
+# 抽象部分と実装部分を分離
+class Abstraction
+  def initialize(implementor)
+    @implementor = implementor
+  end
+  
+  def operation
+    @implementor.operation_impl
+  end
+end
+
+class Implementor
+  def operation_impl
+    raise NotImplementedError
+  end
+end
+
+# Composite パターン
+# 部分-全体の木構造を表現
+class Component
+  def operation
+    raise NotImplementedError
+  end
+  
+  def add(component)
+    raise NotImplementedError
+  end
+  
+  def remove(component)
+    raise NotImplementedError
+  end
+end
+
+class Composite < Component
+  def initialize
+    @children = []
+  end
+  
+  def operation
+    @children.each(&:operation)
+  end
+  
+  def add(component)
+    @children << component
+  end
+  
+  def remove(component)
+    @children.delete(component)
+  end
+end
+
+# Decorator パターン
+# オブジェクトに動的に機能を追加
+class Component
+  def operation
+    raise NotImplementedError
+  end
+end
+
+class Decorator < Component
+  def initialize(component)
+    @component = component
+  end
+  
+  def operation
+    @component.operation
+  end
+end
+
+# Facade パターン
+# サブシステムに統一したインターフェースを提供
+class Facade
+  def initialize
+    @subsystem1 = Subsystem1.new
+    @subsystem2 = Subsystem2.new
+  end
+  
+  def operation
+    @subsystem1.operation1
+    @subsystem2.operation2
+  end
+end
+
+# Proxy パターン
+# 他のオブジェクトへのアクセスを制御
+class Subject
+  def request
+    raise NotImplementedError
+  end
+end
+
+class Proxy < Subject
+  def initialize(real_subject)
+    @real_subject = real_subject
+  end
+  
+  def request
+    # アクセス制御などの前処理
+    @real_subject.request
+    # 後処理
+  end
+end
+
+# 振る舞いパターン (Behavioral Patterns)
+
+# Observer パターン
+# オブジェクト間の1対多の依存関係を定義
+require 'observer'
+
+class Subject
+  include Observable
+  
+  def state=(new_state)
+    @state = new_state
+    changed
+    notify_observers(@state)
+  end
+end
+
+class Observer
+  def update(state)
+    # 状態が変化したときの処理
+  end
+end
+
+# Strategy パターン
+# アルゴリズムをカプセル化して交換可能にする
+class Context
+  def initialize(strategy)
+    @strategy = strategy
+  end
+  
+  def execute
+    @strategy.execute
+  end
+end
+
+class Strategy
+  def execute
+    raise NotImplementedError
+  end
+end
+
+# Template Method パターン
+# アルゴリズムの骨格を定義し、一部の手順をサブクラスで実装
+class AbstractClass
+  def template_method
+    step1
+    step2
+  end
+  
+  private
+  
+  def step1
+    raise NotImplementedError
+  end
+  
+  def step2
+    raise NotImplementedError
+  end
+end
+
+# Command パターン
+# 要求をオブジェクトとしてカプセル化
+class Command
+  def execute
+    raise NotImplementedError
+  end
+end
+
+class Invoker
+  def set_command(command)
+    @command = command
+  end
+  
+  def execute_command
+    @command.execute
+  end
+end
+
+# State パターン
+# オブジェクトの状態に応じて振る舞いを変更
+class Context
+  def initialize(state)
+    transition_to(state)
+  end
+  
+  def transition_to(state)
+    @state = state
+    @state.context = self
+  end
+  
+  def request
+    @state.handle
+  end
+end
+
+class State
+  attr_accessor :context
+  
+  def handle
+    raise NotImplementedError
+  end
+end
+
+# Visitor パターン
+# データ構造とアルゴリズムを分離
+class Element
+  def accept(visitor)
+    raise NotImplementedError
+  end
+end
+
+class Visitor
+  def visit(element)
+    raise NotImplementedError
+  end
+end
+
+# Chain of Responsibility パターン
+# 要求を処理するオブジェクトのチェーンを作る
+class Handler
+  attr_accessor :successor
+  
+  def handle_request(request)
+    if can_handle?(request)
+      process_request(request)
+    elsif successor
+      successor.handle_request(request)
+    end
+  end
+  
+  private
+  
+  def can_handle?(request)
+    raise NotImplementedError
+  end
+  
+  def process_request(request)
+    raise NotImplementedError
+  end
+end
+
+# Mediator パターン
+# オブジェクト間の相互作用をカプセル化
+class Mediator
+  def notify(sender, event)
+    raise NotImplementedError
+  end
+end
+
+class Colleague
+  def initialize(mediator)
+    @mediator = mediator
+  end
+  
+  def send_event(event)
+    @mediator.notify(self, event)
+  end
+end
+
+# Memento パターン
+# オブジェクトの状態を保存・復元する
+class Originator
+  def create_memento
+    Memento.new(@state)
+  end
+  
+  def restore_from_memento(memento)
+    @state = memento.state
+  end
+end
+
+class Memento
+  attr_reader :state
+  
+  def initialize(state)
+    @state = state
+  end
+end
+
+# Iterator パターン
+# 要素の集合に対する反復処理を抽象化
+class Iterator
+  def has_next?
+    raise NotImplementedError
+  end
+  
+  def next
+    raise NotImplementedError
+  end
+end
+
+class Aggregate
+  def create_iterator
+    raise NotImplementedError
+  end
+end
+
+%>

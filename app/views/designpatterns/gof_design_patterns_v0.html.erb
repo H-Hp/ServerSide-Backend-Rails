@@ -1,0 +1,354 @@
+<%=
+
+# Rubyデザインパターンチートシート
+
+###########################################
+# 1. 生成に関するパターン (Creational Patterns)
+###########################################
+
+# === Singleton ===
+# 特定のクラスのインスタンスが1つだけ存在することを保証
+require 'singleton'
+
+class Configuration
+  include Singleton
+  attr_accessor :host, :port
+  
+  def initialize
+    @host = 'localhost'
+    @port = 3000
+  end
+end
+
+# 使用例
+config = Configuration.instance
+config.host = 'example.com'
+puts Configuration.instance.host # => 'example.com'
+
+# === Factory Method ===
+# オブジェクトの生成をサブクラスに委ねる
+class Animal
+  def speak
+    raise NotImplementedError
+  end
+end
+
+class Dog < Animal
+  def speak
+    "Woof!"
+  end
+end
+
+class Cat < Animal
+  def speak
+    "Meow!"
+  end
+end
+
+class AnimalFactory
+  def self.create(type)
+    case type
+    when :dog then Dog.new
+    when :cat then Cat.new
+    else raise "Unknown animal type"
+    end
+  end
+end
+
+# 使用例
+dog = AnimalFactory.create(:dog)
+puts dog.speak # => "Woof!"
+
+# === Builder ===
+# 複雑なオブジェクトを段階的に構築
+class Computer
+  attr_accessor :cpu, :memory, :storage, :gpu
+end
+
+class ComputerBuilder
+  def initialize
+    @computer = Computer.new
+  end
+
+  def add_cpu(cpu)
+    @computer.cpu = cpu
+    self
+  end
+
+  def add_memory(memory)
+    @computer.memory = memory
+    self
+  end
+
+  def add_storage(storage)
+    @computer.storage = storage
+    self
+  end
+
+  def add_gpu(gpu)
+    @computer.gpu = gpu
+    self
+  end
+
+  def build
+    @computer
+  end
+end
+
+# 使用例
+computer = ComputerBuilder.new
+            .add_cpu('Intel i7')
+            .add_memory('16GB')
+            .add_storage('512GB SSD')
+            .add_gpu('RTX 3080')
+            .build
+
+###########################################
+# 2. 構造に関するパターン (Structural Patterns)
+###########################################
+
+# === Adapter ===
+# 互換性のないインターフェースを適合させる
+class OldPrinter
+  def print_old(text)
+    puts "Old Printer: #{text}"
+  end
+end
+
+class NewPrinter
+  def print(text)
+    puts "New Printer: #{text}"
+  end
+end
+
+class PrinterAdapter
+  def initialize(old_printer)
+    @old_printer = old_printer
+  end
+
+  def print(text)
+    @old_printer.print_old(text)
+  end
+end
+
+# 使用例
+old_printer = OldPrinter.new
+adapter = PrinterAdapter.new(old_printer)
+adapter.print("Hello") # => "Old Printer: Hello"
+
+# === Decorator ===
+# オブジェクトに動的に機能を追加
+class Coffee
+  def cost
+    3
+  end
+
+  def description
+    "Simple coffee"
+  end
+end
+
+class MilkDecorator
+  def initialize(coffee)
+    @coffee = coffee
+  end
+
+  def cost
+    @coffee.cost + 0.5
+  end
+
+  def description
+    "#{@coffee.description} with milk"
+  end
+end
+
+# 使用例
+coffee = Coffee.new
+coffee_with_milk = MilkDecorator.new(coffee)
+puts coffee_with_milk.description # => "Simple coffee with milk"
+puts coffee_with_milk.cost # => 3.5
+
+###########################################
+# 3. 振る舞いに関するパターン (Behavioral Patterns)
+###########################################
+
+# === Observer ===
+# オブジェクト間の1対多の依存関係を定義
+require 'observer'
+
+class NewsAgency
+  include Observable
+
+  def breaking_news(news)
+    @news = news
+    changed
+    notify_observers(news)
+  end
+end
+
+class NewsChannel
+  def initialize(name)
+    @name = name
+  end
+
+  def update(news)
+    puts "#{@name} received news: #{news}"
+  end
+end
+
+# 使用例
+agency = NewsAgency.new
+channel1 = NewsChannel.new("Channel 1")
+channel2 = NewsChannel.new("Channel 2")
+
+agency.add_observer(channel1)
+agency.add_observer(channel2)
+agency.breaking_news("Ruby 3.2 released!")
+
+# === Strategy ===
+# アルゴリズムをカプセル化し、実行時に切り替え可能にする
+class PaymentStrategy
+  def pay(amount)
+    raise NotImplementedError
+  end
+end
+
+class CreditCardPayment < PaymentStrategy
+  def pay(amount)
+    puts "Paid #{amount} using Credit Card"
+  end
+end
+
+class PayPalPayment < PaymentStrategy
+  def pay(amount)
+    puts "Paid #{amount} using PayPal"
+  end
+end
+
+class ShoppingCart
+  def initialize(payment_strategy)
+    @payment_strategy = payment_strategy
+  end
+
+  def checkout(amount)
+    @payment_strategy.pay(amount)
+  end
+end
+
+# 使用例
+cart = ShoppingCart.new(CreditCardPayment.new)
+cart.checkout(100)
+
+# === Command ===
+# リクエストをオブジェクトとしてカプセル化
+class Command
+  def execute
+    raise NotImplementedError
+  end
+end
+
+class TurnOnCommand < Command
+  def initialize(device)
+    @device = device
+  end
+
+  def execute
+    @device.turn_on
+  end
+end
+
+class Device
+  def turn_on
+    puts "Device turned on"
+  end
+end
+
+class RemoteControl
+  def submit(command)
+    command.execute
+  end
+end
+
+# 使用例
+device = Device.new
+command = TurnOnCommand.new(device)
+remote = RemoteControl.new
+remote.submit(command)
+
+###########################################
+# その他の重要なパターン
+###########################################
+
+# === Null Object ===
+# null チェックを避けるためのパターン
+class NullUser
+  def name
+    "Guest"
+  end
+
+  def permissions
+    []
+  end
+end
+
+class User
+  attr_reader :name, :permissions
+  
+  def initialize(name, permissions)
+    @name = name
+    @permissions = permissions
+  end
+end
+
+# 使用例
+def get_user(id)
+  # ユーザーが見つからない場合はNullUserを返す
+  id ? User.new("John", ["read"]) : NullUser.new
+end
+
+user = get_user(nil)
+puts user.name # => "Guest"
+
+# === Template Method ===
+# アルゴリズムの骨格を定義し、一部の手順をサブクラスで実装
+class Report
+  def generate
+    header
+    content
+    footer
+  end
+
+  private
+
+  def header
+    puts "Standard Header"
+  end
+
+  def content
+    raise NotImplementedError
+  end
+
+  def footer
+    puts "Standard Footer"
+  end
+end
+
+class PDFReport < Report
+  private
+
+  def content
+    puts "PDF Content"
+  end
+end
+
+# 使用例
+report = PDFReport.new
+report.generate
+
+# デザインパターン使用時の注意点：
+# 1. 過剰な設計を避ける（YAGNI原則）
+# 2. パターンを使う前に、本当に必要かを考える
+# 3. Rubyの動的な特性を活かした実装を検討する
+# 4. 可読性とメンテナンス性を重視する
+
+%>

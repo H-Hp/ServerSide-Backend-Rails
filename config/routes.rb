@@ -59,7 +59,8 @@ Rails.application.routes.draw do
   post 'redis_demo', to: 'cache_cdn_redis#set_value'
   
   #Designpatterns
-  get '/gof_design_patterns'  => 'designpatterns#gof_design_patterns'
+  get '/gof_design_patterns_claude'  => 'designpatterns#gof_design_patterns_claude'
+  get '/gof_design_patterns_v0'  => 'designpatterns#gof_design_patterns_v0'
   get '/cqrs'  => 'designpatterns#cqrs'
   get '/event_sourcing'  => 'designpatterns#event_sourcing'
 
