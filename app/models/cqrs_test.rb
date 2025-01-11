@@ -1,0 +1,2 @@
+class CqrsTest < ApplicationRecord
+end

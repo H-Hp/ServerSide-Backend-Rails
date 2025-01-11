@@ -61,7 +61,8 @@ Rails.application.routes.draw do
   #Designpatterns
   get '/gof_design_patterns_claude'  => 'designpatterns#gof_design_patterns_claude'
   get '/gof_design_patterns_v0'  => 'designpatterns#gof_design_patterns_v0'
-  get '/cqrs'  => 'designpatterns#cqrs'
+  #get '/cqrs'  => 'cqrs#cqrs'
+  resources :cqrs, only: [:index, :show, :create, :update]
   get '/event_sourcing'  => 'designpatterns#event_sourcing'
 
   #serverless
