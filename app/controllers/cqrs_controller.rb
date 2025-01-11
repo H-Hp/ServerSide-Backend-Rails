@@ -1,5 +1,7 @@
 
 class CqrsController < ApplicationController
+  skip_before_action :verify_authenticity_token #CSRFチェックをスキップする
+
   #CQRS
   def cqrs
   end
