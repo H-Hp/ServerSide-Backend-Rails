@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_10_115816) do
+ActiveRecord::Schema.define(version: 2025_01_12_115030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 2025_01_10_115816) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "es_tests", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -47,6 +54,15 @@ ActiveRecord::Schema.define(version: 2025_01_10_115816) do
     t.string "email"
     t.string "password_digest"
     t.string "auth_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_password_changed_events", force: :cascade do |t|
+    t.integer "es_test_id"
+    t.string "old_password_digest"
+    t.string "new_password_digest"
+    t.datetime "changed_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

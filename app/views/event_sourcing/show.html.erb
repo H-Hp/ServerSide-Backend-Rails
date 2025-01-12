@@ -1,0 +1,30 @@
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="container mx-auto px-4 py-8">
+    <div class="mb-6">
+        <h1 class="text-2xl font-bold mb-2">ユーザー詳細</h1>
+        <p class="text-gray-600">Email: <%= @es_test.email %></p>
+    </div>
+
+    <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold mb-4">パスワード変更履歴</h2>
+
+        <% if @password_history.any? %>
+        <div class="space-y-4">
+            <% @password_history.each do |event| %>
+            <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                <div class="text-sm text-gray-600">
+                    変更日時: <%= event.changed_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <% else %>
+        <p class="text-gray-500">パスワード変更履歴はありません。</p>
+        <% end %>
+    </div>
+
+    <div class="mt-6">
+        <%= link_to '一覧に戻る', event_sourcing_path, class: 'text-indigo-600 hover:text-indigo-900' %>
+    </div>
+</div>

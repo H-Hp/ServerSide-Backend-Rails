@@ -1,0 +1,38 @@
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="px-6 py-4">
+            <h1 class="text-2xl font-bold text-center mb-6">パスワード変更</h1>
+
+            <%= form_with(model: @es_test, url: change_password_event_sourcing_path(@es_test), local: true, class: 'space-y-6') do |f| %>
+            <% if @es_test.errors.any? %>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4">
+                <div class="text-red-700">
+                    <ul>
+                        <% @es_test.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+            <% end %>
+
+            <div>
+                <%= f.label :new_password, '新しいパスワード', class: 'block text-sm font-medium text-gray-700' %>
+                <div class="mt-1">
+                    <%= f.password_field :new_password, class: 'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md' %>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <%= f.submit 'パスワードを変更', class: 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="mt-6 text-center">
+        <%= link_to '戻る', event_sourcing_path(@es_test), class: 'text-indigo-600 hover:text-indigo-900' %>
+    </div>
+</div>

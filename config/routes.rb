@@ -63,7 +63,15 @@ Rails.application.routes.draw do
   get '/gof_design_patterns_v0'  => 'designpatterns#gof_design_patterns_v0'
   #get '/cqrs'  => 'cqrs#cqrs'
   resources :cqrs, only: [:index, :show, :create, :update]
-  get '/event_sourcing'  => 'designpatterns#event_sourcing'
+  get '/event_sourcing'  => 'event_sourcing#index'
+  get 'event_sourcing/:id', to: 'event_sourcing#show', as: :show_event_sourcing
+  resources :event_sourcing do
+    member do
+      get :edit_password
+      patch :change_password
+      #post :change_password
+    end
+  end
 
   #serverless
   get '/aws_lambda'  => 'serverless#aws_lambda'
