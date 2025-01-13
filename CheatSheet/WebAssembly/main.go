@@ -6,7 +6,12 @@ import (
     "encoding/json"
 )
 
-// ゲームの状態を管理する構造体
+// グローバル変数として関数を保持
+var (
+    updateFunc js.Func
+    jumpFunc   js.Func
+)
+
 type GameState struct {
     PlayerY     float64 `json:"playerY"`
     PlayerX     float64 `json:"playerX"`
@@ -17,7 +22,6 @@ type GameState struct {
     IsGameOver  bool    `json:"isGameOver"`
 }
 
-// 障害物の構造体
 type Obstacle struct {
     X float64 `json:"x"`
     Y float64 `json:"y"`
@@ -25,7 +29,6 @@ type Obstacle struct {
 
 var game GameState
 
-// 初期化関数
 func initGame() {
     game = GameState{
         PlayerY:   300,
@@ -42,18 +45,32 @@ func initGame() {
     }
 }
 
-// ジャンプ処理
-func jump(this js.Value, args []js.Value) interface{} {
+func registerCallbacks() {
+    // 関数を定義して保持
+    updateFunc = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+        return update()
+    })
+    jumpFunc = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+        jump()
+        return nil
+    })
+
+    // グローバルオブジェクトに関数を登録
+    js.Global().Set("wasmUpdate", updateFunc)
+    js.Global().Set("wasmJump", jumpFunc)
+
+    // 初期化完了のフラグを設定
+    js.Global().Set("wasmInitialized", js.ValueOf(true))
+}
+
+func jump() {
     if !game.IsJumping {
         game.IsJumping = true
         game.Velocity = -15
     }
-    return nil
 }
 
-// ゲームの更新処理
-func update(this js.Value, args []js.Value) interface{} {
-    // プレイヤーの物理演算
+func update() interface{} {
     if game.IsJumping {
         game.PlayerY += game.Velocity
         game.Velocity += 0.8
@@ -65,7 +82,6 @@ func update(this js.Value, args []js.Value) interface{} {
         }
     }
 
-    // 障害物の移動
     for i := range game.Obstacles {
         game.Obstacles[i].X -= 5
 
@@ -74,18 +90,15 @@ func update(this js.Value, args []js.Value) interface{} {
             game.Score++
         }
 
-        // 衝突判定
         if checkCollision(game.PlayerX, game.PlayerY, game.Obstacles[i].X, game.Obstacles[i].Y) {
             game.IsGameOver = true
         }
     }
 
-    // JSONとしてゲーム状態を返す
     jsonState, _ := json.Marshal(game)
     return js.ValueOf(string(jsonState))
 }
 
-// 衝突判定関数
 func checkCollision(playerX, playerY, obstacleX, obstacleY float64) bool {
     return (playerX+30 > obstacleX &&
         playerX < obstacleX+30 &&
@@ -95,12 +108,8 @@ func checkCollision(playerX, playerY, obstacleX, obstacleY float64) bool {
 func main() {
     c := make(chan struct{}, 0)
     
-    // 初期化
     initGame()
-
-    // JavaScriptから呼び出せる関数を登録
-    js.Global().Set("wasmJump", js.FuncOf(jump))
-    js.Global().Set("wasmUpdate", js.FuncOf(update))
+    registerCallbacks()
 
     <-c
 }

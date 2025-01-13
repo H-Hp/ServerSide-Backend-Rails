@@ -19,10 +19,12 @@
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas" width="1800" height="1400"></canvas>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
     <p>Score: <span id="score">0</span></p>
     <script src="wasm_exec.js"></script>
     <script>
+        let gameLoopStarted = false;
+
         async function init() {
             try {
                 const go = new Go();
@@ -30,11 +32,32 @@
                     fetch("main.wasm"),
                     go.importObject
                 );
+                
+                // Goコードの実行を待つ
                 await go.run(result.instance);
+                
+                // WASM関数が利用可能になるまで待機
+                await waitForWasmInit();
+                
+                // ゲーム開始
                 startGame();
             } catch (err) {
                 console.error('Failed to load WASM:', err);
             }
+        }
+
+        // WASM初期化を待つ関数
+        function waitForWasmInit() {
+            return new Promise(resolve => {
+                const checkInit = () => {
+                    if (window.wasmInitialized) {
+                        resolve();
+                    } else {
+                        setTimeout(checkInit, 100);
+                    }
+                };
+                checkInit();
+            });
         }
 
         const canvas = document.getElementById('gameCanvas');
@@ -42,9 +65,8 @@
         const scoreElement = document.getElementById('score');
 
         document.addEventListener('keydown', (event) => {
-            if (event.code === 'Space') {
+            if (event.code === 'Space' && typeof wasmJump === 'function') {
                 wasmJump();
-                console.log("jump!")
             }
         });
 
@@ -59,50 +81,53 @@
         }
 
         function drawGame(gameState) {
-            // JSON文字列をパース
-            const state = JSON.parse(gameState);
-            
-            // 画面クリア
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            try {
+                const state = JSON.parse(gameState);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // 地面の描画
-            ctx.fillStyle = 'brown';
-            ctx.fillRect(0, 330, canvas.width, 70);
+                ctx.fillStyle = 'brown';
+                ctx.fillRect(0, 330, canvas.width, 70);
 
-            // プレイヤーの描画
-            drawPlayer(state.playerX, state.playerY);
+                drawPlayer(state.playerX, state.playerY);
 
-            // 障害物の描画
-            state.obstacles.forEach(obstacle => {
-                drawObstacle(obstacle.x, obstacle.y);
-            });
+                state.obstacles.forEach(obstacle => {
+                    drawObstacle(obstacle.x, obstacle.y);
+                });
 
-            // スコアの更新
-            scoreElement.textContent = state.score;
+                scoreElement.textContent = state.score;
 
-            // ゲームオーバー処理
-            if (state.isGameOver) {
-                ctx.fillStyle = 'black';
-                ctx.font = '48px Arial';
-                ctx.fillText('Game Over!', 300, 200);
-                return true;
+                if (state.isGameOver) {
+                    ctx.fillStyle = 'black';
+                    ctx.font = '48px Arial';
+                    ctx.fillText('Game Over!', 300, 200);
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Error in drawGame:', error);
+                return false;
             }
-            return false;
         }
 
         function gameLoop() {
-            const gameState = wasmUpdate();
-            
-            const isGameOver = drawGame(gameState);
-            if (!isGameOver) {
-                requestAnimationFrame(gameLoop);
-            }
+            //if (typeof wasmUpdate === 'function') {
+                const gameState = wasmUpdate();
+                const isGameOver = drawGame(gameState);
+                console.log("gameState:"+gameState)
+                if (!isGameOver) {
+                    requestAnimationFrame(gameLoop);
+                }
+           // }
         }
 
         function startGame() {
-            requestAnimationFrame(gameLoop);
+            if (!gameLoopStarted) {
+                console.log("a")
+                gameLoopStarted = true;
+                requestAnimationFrame(gameLoop);
+            }
         }
-
         startGame()
         init().catch(console.error);
     </script>
