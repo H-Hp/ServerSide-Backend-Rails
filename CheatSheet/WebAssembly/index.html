@@ -7,32 +7,44 @@
             border: 1px solid black;
             background-color: #87CEEB;
         }
+        #gameCanvas {
+            display: block;
+            margin: 20px auto;
+        }
+        #score {
+            text-align: center;
+            font-size: 24px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <canvas id="gameCanvas" width="1800" height="1400"></canvas>
     <p>Score: <span id="score">0</span></p>
-
-     <!-- 重要: wasm_exec.jsを最初に読み込む -->
-     <script src="wasm_exec.js"></script>
-     
+    <script src="wasm_exec.js"></script>
     <script>
-        // WebAssemblyの読み込み
-        const go = new Go();
-        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject)
-            .then((result) => {
-                go.run(result.instance);
+        async function init() {
+            try {
+                const go = new Go();
+                const result = await WebAssembly.instantiateStreaming(
+                    fetch("main.wasm"),
+                    go.importObject
+                );
+                await go.run(result.instance);
                 startGame();
-            });
+            } catch (err) {
+                console.error('Failed to load WASM:', err);
+            }
+        }
 
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const scoreElement = document.getElementById('score');
 
-        // キーボード入力の処理
         document.addEventListener('keydown', (event) => {
             if (event.code === 'Space') {
                 wasmJump();
+                console.log("jump!")
             }
         });
 
@@ -47,6 +59,9 @@
         }
 
         function drawGame(gameState) {
+            // JSON文字列をパース
+            const state = JSON.parse(gameState);
+            
             // 画面クリア
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -55,18 +70,18 @@
             ctx.fillRect(0, 330, canvas.width, 70);
 
             // プレイヤーの描画
-            drawPlayer(gameState.playerX, gameState.playerY);
+            drawPlayer(state.playerX, state.playerY);
 
             // 障害物の描画
-            gameState.obstacles.forEach(obstacle => {
-                drawObstacle(obstacle.X, obstacle.Y);
+            state.obstacles.forEach(obstacle => {
+                drawObstacle(obstacle.x, obstacle.y);
             });
 
             // スコアの更新
-            scoreElement.textContent = gameState.score;
+            scoreElement.textContent = state.score;
 
             // ゲームオーバー処理
-            if (gameState.isGameOver) {
+            if (state.isGameOver) {
                 ctx.fillStyle = 'black';
                 ctx.font = '48px Arial';
                 ctx.fillText('Game Over!', 300, 200);
@@ -77,6 +92,7 @@
 
         function gameLoop() {
             const gameState = wasmUpdate();
+            
             const isGameOver = drawGame(gameState);
             if (!isGameOver) {
                 requestAnimationFrame(gameLoop);
@@ -86,6 +102,9 @@
         function startGame() {
             requestAnimationFrame(gameLoop);
         }
+
+        startGame()
+        init().catch(console.error);
     </script>
 </body>
 </html>
