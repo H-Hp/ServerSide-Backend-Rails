@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   post '/jwt_login', to: 'auth_jwt#login'
   get '/jwt_profile', to: 'auth_jwt#profile'
 
-  get '/oauth'  => 'auth#oauth'
   get '/sso'  => 'auth#sso'
 
   get '/saml'  => 'auth_saml#saml'
@@ -40,6 +39,19 @@ Rails.application.routes.draw do
   get '/saml/metadata', to: 'auth_saml#metadata'
   #delete '/saml_logout', to: 'auth_saml#delete'
 
+  #OpenID Connect
+  #get '/oauth'  => 'auth#oauth'
+  get '/openid/index', to: 'auth_openid#index' , as: 'auth_openid_index'
+  get '/openid/failure', to: 'auth_openid#failure'
+  get '/openid/logout', to: 'auth_openid#destroy'
+  get '/openid/dashboard', to: 'auth_openid#dashboard',as: 'auth_openid_dashboard_path'
+  #get '/apenidconnect/google_oauth2/callback', to: 'auth_openid#create'
+  #get '/openid/:provider/callback', to: 'auth_openid#create'
+  #get '/apenidconnect/:provider/callback', to: 'auth_openid#create'
+  #get '/auth/google_oauth2/callback', to: 'auth_openid#create'
+  get '/auth/:provider/callback', to: 'auth_openid#create'
+  #post '/auth/:provider/callback', to: 'sessions#create'
+  #post '/auth/:provider/callback', to: 'auth_openid#create'
 
   #web_security
   #get 'web_security/hash'
