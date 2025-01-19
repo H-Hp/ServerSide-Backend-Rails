@@ -35,8 +35,6 @@ gem 'rack-cors'
 
 gem 'jwt'  # JWTトークン生成
 
-gem 'ruby-saml'
-
 gem 'react-rails'
 
 gem "graphql"
@@ -51,6 +49,12 @@ gem 'google-protobuf'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+
+gem 'omniauth-keycloak'
+#gem 'ruby-saml'
+gem 'omniauth-saml'
+
+gem 'concurrent-ruby', '1.3.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

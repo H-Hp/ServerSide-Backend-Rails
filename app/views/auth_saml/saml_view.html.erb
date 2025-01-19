@@ -1,0 +1,36 @@
+<h1>Welcome to SAML Sample App</h1>
+
+<% if notice %>
+<p style="color: green"><%= notice %></p>
+<% end %>
+<% if alert %>
+<p style="color: red"><%= alert %></p>
+<% end %>
+
+<div>
+    <% if current_user %>
+    <p>Welcome, <%= current_user[:name] %></p>
+    <%= link_to 'Sign Out', saml_logout_path %>
+    <% else %>
+    <%= link_to 'Sign In', '/auth/saml' %>
+    <%= button_to '/auth/saml', method: :post, data: { turbo: false }, class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" do %>
+    Sign in with Keycloak
+    <% end %>
+    <%= button_to '/saml', method: :post, data: { turbo: false }, class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" do %>
+    Sign in with Keycloak
+    <% end %>
+    <% end %>
+</div>
+
+<% if current_user %>
+<h2>User Information</h2>
+<ul>
+    <%= @user_attributes %>
+    <%= @email %>
+    <%= @first_name %>
+    <%= @last_name %>
+
+</ul>
+<% else %>
+<p>Please sign in to see your information</p>
+<% end %>

@@ -33,10 +33,14 @@ Rails.application.routes.draw do
 
   get '/sso'  => 'auth#sso'
 
-  get '/saml'  => 'auth_saml#saml'
-  get '/saml_sso'  => 'auth_saml#sso'
-  post '/saml_acs', to: 'auth_saml#acs'
-  get '/saml/metadata', to: 'auth_saml#metadata'
+  get '/saml'  => 'auth_saml#saml_view'
+  #get '/saml/callback', to: 'auth_saml#create'
+  get '/auth/saml/callback', to: 'auth_saml#create'
+  post '/auth/saml/callback', to: 'auth_saml#create'
+  get '/auth/failure', to: 'auth_saml#failure'
+  #get '/saml/failure', to: 'auth_saml#failure'
+  get '/saml/logout', to: 'auth_saml#destroy'
+  resource :auth_saml, only: [:create, :destroy]
   #delete '/saml_logout', to: 'auth_saml#delete'
 
   #OpenID Connect

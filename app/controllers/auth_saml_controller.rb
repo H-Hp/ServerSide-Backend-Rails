@@ -1,48 +1,67 @@
 class AuthSamlController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:acs]
+  #skip_before_action :verify_authenticity_token, only: [:acs]
+  protect_from_forgery with: :exception
+  helper_method :current_user
+  skip_before_action :verify_authenticity_token, only: [:create]
 
-  def saml
-  end
+  def saml_view
+    @user_attributes = session[:user_attributes] # セッションから値を取得
+    if @user_attributes
+      puts "セッション情報：#{@user_attributes}"
+      # @user_attributes を使った処理
+      #@name = @user_attributes[:name]
+      #@email = @user_attributes[:email]
+      #@attributes = @user_attributes[:attributes]
+      @email = @user_attributes['urn:oid:1.2.840.113549.1.9.1']&.first
+      @first_name = @user_attributes['urn:oid:2.5.4.42']&.first
+      @last_name = @user_attributes['urn:oid:2.5.4.4']&.first
 
-  def sso
-    settings = saml_settings
-    request = OneLogin::RubySaml::Authrequest.new
-    redirect_to(request.create(settings))
-  end
-
-  def acs
-    response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], settings: saml_settings)
-
-    if response.is_valid?
-      session[:user_id] = response.nameid
-      redirect_to root_path, notice: 'Successfully authenticated'
+      puts "Email: #{@email}"
+      puts "First Name: #{@first_name}"
+      puts "Last Name: #{@last_name}"
     else
-      redirect_to root_path, alert: 'Failed to authenticate'
+      puts "セッション情報がありません"
     end
   end
 
-  def metadata
-    settings = saml_settings
-    meta = OneLogin::RubySaml::Metadata.new
-    render xml: meta.generate(settings), content_type: 'application/samlmetadata+xml'
+  def create
+    #Rails.logger.info "あSAML Callback received: #{request.env['omniauth.auth']}"
+    puts "createアクション"
+    auth = request.env['omniauth.auth']
+    #session[:user_attributes] = {
+      #name: auth.info.name,
+      #email: auth.info.email,
+      #attributes: auth.extra.raw_info.attributes
+    #}
+    session[:user_attributes] = auth.extra.raw_info.attributes
+    
+    puts "auth: #{auth}"
+    #redirect_to root_path, notice: 'Signed in successfully'
+    #redirect_to controller: 'auth_saml', action: 'saml_view', notice: 'Signed in successfully'
+    redirect_to saml_path, notice: 'Signed in successfully'
   end
 
-  def delete
+  def destroy
+    session[:user_attributes] = nil
+    #redirect_to root_path, notice: 'Signed out successfully'
+    redirect_to controller: 'auth_saml', action: 'saml_view', notice: 'Signed out successfully'
+  end
 
+  def failure
+    #redirect_to root_path, alert: 'Authentication failed'
+    redirect_to controller: 'auth_saml', action: 'saml_view', alert: 'Authentication failed'
+  end
+
+  private
+  
+  def current_user
+    @current_user ||= session[:user_attributes] if session[:user_attributes]
   end
   
-  private
-
-  def saml_settings
-    settings = OneLogin::RubySaml::Settings.new
-
-    settings.assertion_consumer_service_url = saml_acs_url
-    settings.sp_entity_id                   = saml_metadata_url
-    settings.idp_entity_id                  = 'https://app.onelogin.com/saml/metadata/123456'
-    settings.idp_sso_target_url             = 'https://app.onelogin.com/trust/saml2/http-post/sso/123456'
-    settings.idp_cert_fingerprint           = '1234567890123456789012345678901234567890'
-    settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
-
-    settings
+  def authenticate_user!
+    unless current_user
+      #redirect_to root_path, alert: 'Please sign in first'
+      redirect_to controller: 'auth_saml', action: 'saml_view', alert: 'Please sign in first'
+    end
   end
 end

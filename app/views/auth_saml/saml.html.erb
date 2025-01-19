@@ -1,9 +1,0 @@
-<h1>SAML Authentication Demo</h1>
-
-<% if session[:user_id] %>
-  <p>You are logged in as: <%= session[:user_id] %></p>
-  <%= button_to 'Logout', session_logout_path, method: :delete %>
-<% else %>
-  <%= link_to 'Login with SAML', saml_sso_path %>
-<% end %>
-
