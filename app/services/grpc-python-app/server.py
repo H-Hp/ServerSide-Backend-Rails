@@ -4,12 +4,14 @@ from concurrent import futures
 import grpc
 #import hello_pb2
 #import hello_pb2_grpc
-import grpc
 import greeter_pb2
 import greeter_pb2_grpc
 
 class GreeterServicer(greeter_pb2_grpc.GreeterServicer):
     def SayHello(self, request, context):
+    #def say_hello(self, request, context):
+        #print("python SayHello start")
+        #return "a"
         return greeter_pb2.HelloReply(message='Hello, %s!' % request.name)
 
 def serve():

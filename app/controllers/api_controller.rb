@@ -1,4 +1,4 @@
-require 'grpc_services/grpc_client'
+require 'grpc_services/grpc_client' #app/services/grpc_services/grpc_client.rb モジュールに定義されているメソッドやクラスを呼び出すことができます
 #require 'grpc_services/greeter_service'
 
 class ApiController < ApplicationController
@@ -23,7 +23,8 @@ class ApiController < ApplicationController
   end
 
   def grpc
-    @message = GrpcClient.say_hello('Rails User')
+    @message = GrpcClient.say_hello('Rails User') #grpc_client.rbのsay_helloメソッドの呼出し
+    puts "@message: #{@message}"
     #@message = GreeterService.say_hello("name")
   end
 
