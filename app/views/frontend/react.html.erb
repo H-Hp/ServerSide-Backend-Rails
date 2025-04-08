@@ -1,8 +1,18 @@
 <%= content_for :head do %>
-  <%= javascript_pack_tag 'react_pack' %>
+<%= javascript_pack_tag 'react_pack' %>
 <% end %>
-
-  <%= javascript_pack_tag 'react_pack' %>
-
+<%= javascript_pack_tag 'react_pack' %>
 
 <div id="react-container"></div>
+<style>
+    code {
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        font-size: 0.9em;
+        background-color: #282c34;
+        /* Dark background */
+        color: rgb(24, 243, 20);
+        /* Light text */
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+    }
+</style>
